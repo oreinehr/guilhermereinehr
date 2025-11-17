@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Footer from "../components/Footer";
-import { cases, CaseType } from "../data/cases";
+import { cases } from "../data/cases";
 
 // ---------------------------
 // CaseCard
