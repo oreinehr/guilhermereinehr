@@ -3,6 +3,7 @@ import "./globals.css"
 import { cn } from "./components/ui/lib/utils"
 import type React from "react" // Added import for React
 import { Archivo } from "next/font/google";
+import Loader from "../app/components/Loader"
 
 import { Metadata } from "next";
 
@@ -24,7 +25,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body className={cn(archivo.className, "bg-black text-white antialiased")}>{children}</body>
+      <body className={cn(archivo.className, "bg-black text-white antialiased")}>{children}<Loader /> </body>
     </html>
   )
 }
