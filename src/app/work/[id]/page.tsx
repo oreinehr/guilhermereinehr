@@ -35,7 +35,7 @@ export default function CasePage() {
     leading-[0.8]
   "
 >
-  Planeta Atlânti12
+  Planeta Atlântida
 </h1>
 
 
