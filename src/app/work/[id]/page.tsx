@@ -15,7 +15,7 @@ export default function CasePage() {
           variants={fadeImage}
           initial="hidden"
           animate="show"
-          style={{ filter: "blur(14px)" }}
+          style={{ filter: "blur(0px)" }}
           className="absolute inset-0"
         >
           <Image
@@ -74,7 +74,7 @@ export default function CasePage() {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true }}
-          style={{ filter: "blur(14px)" }}
+          style={{ filter: "blur(0px)" }}
         >
           <Image
             src="/gallery/gal1.png"
@@ -90,7 +90,7 @@ export default function CasePage() {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true }}
-          style={{ filter: "blur(14px)" }}
+          style={{ filter: "blur(0px)" }}
         >
           <Image
             src="/gallery/gal2.png"
@@ -130,7 +130,7 @@ export default function CasePage() {
             initial="hidden"
             whileInView="show"
             viewport={{ once: true }}
-            style={{ filter: "blur(14px)" }}
+            style={{ filter: "blur(0x)" }}
           >
             <Image
               src={src}
