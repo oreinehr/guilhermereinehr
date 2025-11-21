@@ -17,7 +17,8 @@ const wordAnimation: Variants = {
     filter: "blur(0px)",
     transition: {
       duration: 0.55,
-      ease: [0.16, 1, 0.3, 1],
+ease: "easeInOut"
+
     },
   },
 };

@@ -43,7 +43,8 @@ const fadeUp: Variants = {
     scale: 1,
     transition: {
       duration: 1.2,
-      ease: [0.16, 1, 0.3, 1],
+      ease: "easeInOut"
+
     },
   },
 };
@@ -62,16 +63,13 @@ const fadeImage: Variants = {
     y: 0,
     transition: {
       duration: 1.3,
-      ease: [0.16, 1, 0.3, 1],
+     ease: "easeInOut"
+
     },
   },
 };
 
 
-/* QUEBRA EM PALAVRAS */
-function splitWords(text: string): string[] {
-  return text.split(" ").map((word) => word + " ");
-}
 
 /* CARD INDIVIDUAL */
 function CaseCard({ src, title, id }: { src: string; title: string; id: number }) {
