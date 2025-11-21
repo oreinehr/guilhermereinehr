@@ -1,15 +1,15 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 
 /* QUEBRA EM PALAVRAS */
-function splitWords(text: string) {
+function splitWords(text: string): string[] {
   return text.split(" ").map((word) => word + " ");
 }
 
 /* ANIMAÇÃO INDIVIDUAL DAS PALAVRAS */
-const wordAnimation: any = {
+const wordAnimation: Variants = {
   hidden: { opacity: 0, y: 15, filter: "blur(8px)" },
   show: {
     opacity: 1,
@@ -22,9 +22,8 @@ const wordAnimation: any = {
   },
 };
 
-
 /* TIMING ENTRE PALAVRAS */
-const sentence = {
+const sentence: Variants = {
   hidden: {},
   show: {
     transition: { staggerChildren: 0.08 },
@@ -32,7 +31,7 @@ const sentence = {
 };
 
 /* FADE UP */
-const fadeUp = {
+const fadeUp: Variants = {
   hidden: { opacity: 0, y: 40, filter: "blur(12px)", scale: 0.95 },
   show: {
     opacity: 1,

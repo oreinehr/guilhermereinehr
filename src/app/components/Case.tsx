@@ -4,14 +4,10 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-
-/* QUEBRA O TEXTO EM PALAVRAS */
-function splitWords(text: string) {
-  return text.split(" ").map((word) => word + " ");
-}
+import type { Variants } from "framer-motion";
 
 /* ANIMAÇÃO INDIVIDUAL DE CADA PALAVRA */
-const wordAnimation: any = {
+const wordAnimation: Variants = {
   hidden: { opacity: 0, y: 15, filter: "blur(8px)" },
   show: {
     opacity: 1,
@@ -24,9 +20,7 @@ const wordAnimation: any = {
   },
 };
 
-
-/* CONTROLADOR DE TEMPO ENTRE PALAVRAS */
-const sentence = {
+const sentence: Variants = {
   hidden: {},
   show: {
     transition: {
@@ -35,8 +29,7 @@ const sentence = {
   },
 };
 
-/* ANIMAÇÃO UP */
-const fadeUp = {
+const fadeUp: Variants = {
   hidden: {
     opacity: 0,
     y: 40,
@@ -55,8 +48,7 @@ const fadeUp = {
   },
 };
 
-/* ANIMAÇÃO DAS IMAGENS */
-const fadeImage = {
+const fadeImage: Variants = {
   hidden: {
     opacity: 0,
     scale: 1.08,
@@ -74,6 +66,12 @@ const fadeImage = {
     },
   },
 };
+
+
+/* QUEBRA EM PALAVRAS */
+function splitWords(text: string): string[] {
+  return text.split(" ").map((word) => word + " ");
+}
 
 /* CARD INDIVIDUAL */
 function CaseCard({ src, title, id }: { src: string; title: string; id: number }) {
