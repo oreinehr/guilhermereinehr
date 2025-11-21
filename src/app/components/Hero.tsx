@@ -5,6 +5,8 @@ import Link from "next/link";
 import Lottie from "lottie-react";
 import { motion } from "framer-motion";
 import animationData from "../data/scene.json";
+import { circOut } from "framer-motion";
+
 
 /* --- ANIMAÇÕES --- */
 
@@ -12,9 +14,9 @@ import animationData from "../data/scene.json";
 const fadeUp = {
   hidden: {
     opacity: 0,
-    y: 40,
-    filter: "blur(12px)",
-    scale: 0.95,
+    y: 20,
+    filter: "blur(6px)",
+    scale: 0.98,
   },
   show: {
     opacity: 1,
@@ -22,9 +24,8 @@ const fadeUp = {
     filter: "blur(0px)",
     scale: 1,
     transition: {
-      duration: 1.2,
-     ease: "easeInOut"
-
+      duration: 0.6,
+   ease: circOut
 
     },
   },
