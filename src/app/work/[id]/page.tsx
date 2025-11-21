@@ -2,28 +2,8 @@
 
 import Image from "next/image";
 import Footer from "@/app/components/Footer";
-import { motion, Variants, easeOut } from "framer-motion";
-
-// ---- animações padrão ---- //
-
-export const fadeUp: Variants = {
-  hidden: { opacity: 0, y: 40, scale: 0.95 },
-  show: {
-    opacity: 1,
-    y: 0,
-    scale: 1,
-    transition: { duration: 1.2, ease: easeOut },
-  },
-};
-
-export const fadeImage: Variants = {
-  hidden: { opacity: 0, scale: 0.95 },
-  show: {
-    opacity: 1,
-    scale: 1,
-    transition: { duration: 1.4, ease: easeOut },
-  },
-};
+import { motion } from "framer-motion";
+import { fadeUp, fadeImage } from "@/app/animations/variants"; // import do arquivo separado
 
 export default function CasePage() {
   return (
