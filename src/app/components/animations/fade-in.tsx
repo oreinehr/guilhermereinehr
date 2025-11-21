@@ -17,7 +17,7 @@ export function FadeIn({ children, delay = 0, className, ...props }: FadeInProps
       transition={{
         duration: 0.5,
         delay,
-        ease: [0.21, 0.47, 0.32, 0.98],
+       ease: "easeOut",
       }}
       className={cn(className)}
       {...props}

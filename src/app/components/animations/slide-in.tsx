@@ -25,7 +25,7 @@ export function SlideIn({ children, direction = "left", delay = 0, className, ..
       transition={{
         duration: 0.5,
         delay,
-        ease: [0.21, 0.47, 0.32, 0.98],
+       ease: "easeOut",
       }}
       whileHover={{ scale: 1.0 }}  // Optionally add a hover effect
       className={cn(className)}
