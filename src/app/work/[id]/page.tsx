@@ -11,7 +11,7 @@ export default function CasePage() {
 
       <section className="relative w-full h-screen">
         <Image
-          src="/planeta.png"
+          src="/planetaatl.png"
           alt="Planeta"
           fill
           className="object-cover"
@@ -42,7 +42,7 @@ export default function CasePage() {
         </section>
       </section>
 
-      <div className="px-6 md:px-16 py-12">
+      <div className="px-6 md:px-16 py-14,">
         <h1 className="max-w-6xl text-2xl md:text-4xl font-light">
           <span className="text-[#F2360C] font-medium">Yo,</span>{" "}
           desenvolver o site do Planeta Atlântida foi uma das experiências mais intensas, desafiadoras e, ao mesmo tempo, gratificantes da minha trajetória como UX/UI Designer.

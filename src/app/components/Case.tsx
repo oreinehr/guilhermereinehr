@@ -77,7 +77,7 @@ export default function Cases() {
       {/* Botão See all cases */}
       <div className="flex justify-center">
         <Link
-          href="/work"
+          href="/cases  "
           className="border border-[#F2360C] text-[#F2360C] font-medium px-14 py-4 rounded-lg text-sm md:text-base hover:bg-[#F2360C] hover:text-black transition"
         >
           See all cases

@@ -114,15 +114,7 @@ export default function Hero() {
             </div>
 
             {/* Imagem central */}
-            <div className="absolute bottom-40 left-1/2 -translate-x-1/2">
-              <Image
-                src="/imagem.png"
-                alt="Turntable"
-                width={160}
-                height={120}
-                className="rounded shadow-lg"
-              />
-            </div>
+           
 
             {/* Texto da direita */}
             <div className="absolute bottom-56 right-80 max-w-xs text-right">
@@ -131,16 +123,7 @@ export default function Hero() {
               </p>
             </div>
 
-            {/* Imagem da direita */}
-            <div className="absolute bottom-40 right-24">
-              <Image
-                src="/imagem2.png"
-                alt="Portrait"
-                width={140}
-                height={200}
-                className="rounded shadow-lg"
-              />
-            </div>
+          
           </div>
         </div>
       </div>
