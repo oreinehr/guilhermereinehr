@@ -2,7 +2,7 @@ import "./globals.css"
 import { cn } from "./components/ui/lib/utils"
 import type React from "react"
 import { Archivo } from "next/font/google"
-import LoaderWrapper from "./components/LoaderWrapper.tsx"
+import LoaderWrapper from "./components/LoaderWrapper"
 import { Metadata } from "next"
 
 export const metadata: Metadata = {
