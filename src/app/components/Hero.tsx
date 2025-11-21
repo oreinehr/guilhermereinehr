@@ -8,6 +8,7 @@ import animationData from "../data/scene.json";
 
 /* --- ANIMAÇÕES --- */
 
+
 const fadeUp = {
   hidden: {
     opacity: 0,

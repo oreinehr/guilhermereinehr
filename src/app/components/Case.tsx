@@ -6,6 +6,10 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import type { Variants } from "framer-motion";
 
+
+function splitWords(text: string): string[] {
+  return text.split(" ").map((word) => word + " ");
+}
 /* ANIMAÇÃO INDIVIDUAL DE CADA PALAVRA */
 const wordAnimation: Variants = {
   hidden: { opacity: 0, y: 15, filter: "blur(8px)" },
