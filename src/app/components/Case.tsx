@@ -3,8 +3,78 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { motion } from "framer-motion";
 
-// Adicione a prop "id" para cada case
+/* QUEBRA O TEXTO EM PALAVRAS */
+function splitWords(text: string) {
+  return text.split(" ").map((word) => word + " ");
+}
+
+/* ANIMAÇÃO INDIVIDUAL DE CADA PALAVRA */
+const wordAnimation = {
+  hidden: { opacity: 0, y: 20, filter: "blur(3px)" },
+  show: {
+    opacity: 1,
+    y: 0,
+    filter: "blur(0px)",
+    transition: {
+      duration: 0.9,
+      ease: [0.24, 1, 0.3, 1],
+    },
+  },
+};
+
+/* CONTROLADOR DE TEMPO ENTRE PALAVRAS */
+const sentence = {
+  hidden: {},
+  show: {
+    transition: {
+      staggerChildren: 0.08,
+    },
+  },
+};
+
+/* ANIMAÇÃO UP */
+const fadeUp = {
+  hidden: {
+    opacity: 0,
+    y: 40,
+    filter: "blur(12px)",
+    scale: 0.95,
+  },
+  show: {
+    opacity: 1,
+    y: 0,
+    filter: "blur(0px)",
+    scale: 1,
+    transition: {
+      duration: 1.2,
+      ease: [0.16, 1, 0.3, 1],
+    },
+  },
+};
+
+/* ANIMAÇÃO DAS IMAGENS */
+const fadeImage = {
+  hidden: {
+    opacity: 0,
+    scale: 1.08,
+    filter: "blur(14px)",
+    y: 30,
+  },
+  show: {
+    opacity: 1,
+    scale: 1,
+    filter: "blur(0px)",
+    y: 0,
+    transition: {
+      duration: 1.3,
+      ease: [0.16, 1, 0.3, 1],
+    },
+  },
+};
+
+/* CARD INDIVIDUAL */
 function CaseCard({ src, title, id }: { src: string; title: string; id: number }) {
   const [showMobileContent, setShowMobileContent] = useState(false);
 
@@ -16,40 +86,67 @@ function CaseCard({ src, title, id }: { src: string; title: string; id: number }
   }, []);
 
   return (
-    <div className="relative w-full h-96 md:h-[36rem] overflow-hidden group cursor-pointer rounded-md">
+    <motion.div
+      variants={fadeImage}
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true }}
+      className="relative w-full h-96 md:h-[36rem] overflow-hidden group cursor-pointer rounded-lg"
+    >
       {/* Imagem */}
-      <Image
-        src={src}
-        alt={title}
-        fill
-        className="object-cover transition-all duration-700 ease-out group-hover:scale-110"
-      />
+      <motion.div
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true }}
+        variants={fadeImage}
+        className="absolute inset-0"
+      >
+        <Image
+          src={src}
+          alt={title}
+          fill
+          className="object-cover transition-all duration-700 ease-out group-hover:scale-110"
+        />
+      </motion.div>
 
-      {/* Overlay escuro */}
-      <div
+      {/* Overlay */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 1.2 }}
         className={`absolute inset-0 bg-black/60 transition-opacity duration-700
           ${showMobileContent ? "opacity-100" : "opacity-0 md:group-hover:opacity-100"}`}
       />
 
-      {/* Conteúdo */}
+      {/* Texto + botão */}
       <div
         className={`absolute inset-0 flex flex-col items-center justify-center text-center transition-all duration-700
           ${showMobileContent ? "opacity-100" : "opacity-0 md:group-hover:opacity-100"}`}
       >
-        <h3 className="text-4xl md:text-5xl font-black mb-4 tracking-tight">{title}</h3>
-
-        {/* Botão agora usa Link do Next.js */}
-        <Link
-          href={`/work/${id}`}
-          className="px-20 py-4 font-semibold border border-white rounded-lg text-white hover:bg-white hover:text-black transition"
+        <motion.h3
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true }}
+          className="text-4xl md:text-5xl font-black mb-4 tracking-tight"
         >
-          Ver projeto
-        </Link>
+          {title}
+        </motion.h3>
+
+        <motion.div variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }}>
+          <Link
+            href={`/work/${id}`}
+            className="px-20 py-4 font-semibold border border-white rounded-lg text-white hover:bg-white hover:text-black transition"
+          >
+            Ver projeto
+          </Link>
+        </motion.div>
       </div>
-    </div>
+    </motion.div>
   );
 }
 
+/* COMPONENTE PRINCIPAL */
 export default function Cases() {
   const caseItems = [
     { id: 1, src: "/planeta.png", title: "Planeta Atlântida" },
@@ -60,29 +157,55 @@ export default function Cases() {
 
   return (
     <section className="w-full bg-black text-white py-16 px-4 md:px-12">
-      {/* Título */}
-      <h2 className="max-w-3xl text-2xl md:text-4xl font-light leading-snug mb-12">
-        <span className="text-[#F2360C] font-medium">Crafting immersive</span>{" "}
-        digital experiences through <br />
-        UX/UI, Motion design & prototype.
-      </h2>
 
-      {/* Grid de imagens */}
+      {/* Título com animação PALAVRA POR PALAVRA */}
+      <motion.h2
+        variants={sentence}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true }}
+        className="max-w-3xl text-2xl md:text-4xl font-light whitespace-pre-wrap mb-12"
+      >
+        {/* linha 1 */}
+        {splitWords("Crafting immersive digital experiences").map((word, i) => (
+          <motion.span key={i} variants={wordAnimation} className="inline-block text-[#F2360C] font-medium">
+            {word}
+          </motion.span>
+        ))}
+
+        {splitWords("through UX/UI, Motion design & prototype.").map((word, i) => (
+          <motion.span key={i} variants={wordAnimation} className="inline-block text-white ">
+            {word}
+          </motion.span>
+        ))}
+
+        
+
+      
+      </motion.h2>
+
+      {/* GRID */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-2 mb-6">
         {caseItems.map((c) => (
           <CaseCard key={c.id} src={c.src} title={c.title} id={c.id} />
         ))}
       </div>
 
-      {/* Botão See all cases */}
-      <div className="flex justify-center">
+      {/* Botão final */}
+      <motion.div
+        variants={fadeUp}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true }}
+        className="flex justify-center"
+      >
         <Link
-          href="/cases  "
+          href="/cases"
           className="border border-[#F2360C] text-[#F2360C] font-medium px-14 py-4 rounded-lg text-sm md:text-base hover:bg-[#F2360C] hover:text-black transition"
         >
           See all cases
         </Link>
-      </div>
+      </motion.div>
     </section>
   );
 }

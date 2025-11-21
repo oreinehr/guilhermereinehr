@@ -6,11 +6,11 @@ export default function Footer() {
       {/* Texto animado estilo letreiro */}
       <div className="absolute top-1/2 -translate-y-1/2 left-0 w-full flex justify-center z-20 overflow-hidden">
   <div className="flex animate-marquee whitespace-nowrap">
-   <h2 className="text-[15vw] md:text-[10vw] font-black uppercase pointer-events-none select-none text-transparent [-webkit-text-stroke:1px_white] font-[Archivo] tracking-tight pr-16">
+   <h2 className="text-[15vw] md:text-[10vw] font-black uppercase pointer-events-none select-none text-transparent [-webkit-text-stroke:2px_white] font-[Archivo] tracking-tight pr-16">
 
       Thanks for scrolling! Thanks for scrolling! Thanks for scrolling!
     </h2>
-    <h2 className="text-[15vw] md:text-[10vw] font-black uppercase pointer-events-none select-none text-transparent [-webkit-text-stroke:1px_white] font-[Archivo] tracking-tight pr-16">
+    <h2 className="text-[15vw] md:text-[10vw] font-black uppercase pointer-events-none select-none text-transparent [-webkit-text-stroke:2px_white] font-[Archivo] tracking-tight pr-16">
 
       Thanks for scrolling! Thanks for scrolling! Thanks for scrolling!
     </h2>
