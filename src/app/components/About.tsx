@@ -30,7 +30,8 @@ export default function About() {
           />
         </div>
 
-        <div className="relative max-w-3xl w-full bg-black/7 backdrop-blur-xl rounded-2xl border border-white/10 px-8 py-10 shadow-xl">
+       <div className="relative max-w-3xl w-full bg-black/7 backdrop-blur-xl rounded-2xl border border-white/10 px-8 py-10 shadow-xl mx-6 md:mx-auto">
+
           <div className="grid grid-cols-2 gap-8 text-sm md:text-base">
             {/* Coluna 1 */}
             <div>

@@ -3,20 +3,26 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import Lottie from "lottie-react";
+import animationData from "../data/scene.json"; // ajuste se necessário
 
 export default function Hero() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <section className="relative h-screen w-full overflow-hidden text-white">
-      {/* Background */}
-      <div className="absolute inset-0 -z-10">
-        <Image
-          src="/foto.png"
-          alt="Background"
-          fill
-          className="object-cover"
-          priority
+    <section className="relative h-screen w-screen overflow-hidden text-white">
+
+      {/* Background Lottie */}
+      <div className="absolute inset-0 -z-10 pointer-events-none">
+        <Lottie
+          animationData={animationData}
+          loop={true}
+          autoplay={true}
+          // força o wrapper ocupar 100%
+          style={{ width: "100%", height: "100%" }}
+          // faz o SVG "slice" (crop) para cobrir a área — como background-size: cover
+          rendererSettings={{ preserveAspectRatio: "xMidYMid slice" }}
+          className="lottie-cover"
         />
       </div>
 
@@ -41,7 +47,7 @@ export default function Hero() {
         </nav>
       </header>
 
-      {/* Header Mobile com Hamburger */}
+      {/* Header Mobile */}
       <header className="md:hidden flex justify-between items-center px-6 py-4">
         <Link href="/">
           <h1 className="font-black text-3xl tracking-tighter cursor-pointer">
@@ -88,16 +94,18 @@ export default function Hero() {
 
       {/* Hero Content */}
       <div className="relative flex flex-col justify-center items-center h-full">
-        {/* Letreiro Mobile sem animação */}
+
+        {/* Mobile letreiro */}
         <h2 className="md:hidden absolute top-20 left-0 text-[35vw] font-black text-transparent stroke-text whitespace-nowrap z-10"></h2>
 
-        {/* Conteúdo Desktop */}
+        {/* Desktop Content */}
         <div className="hidden md:relative md:flex md:w-full md:h-full md:flex-col md:justify-center md:items-center">
           <h2 className="relative z-10 text-[24vw] font-black tracking-tighter text-transparent stroke-text leading-none top-20">
             reinehr
           </h2>
 
           <div className="relative w-full h-screen">
+
             {/* Texto da esquerda */}
             <div className="absolute bottom-56 left-80 max-w-xs">
               <p className="text-xl leading-snug">
@@ -106,15 +114,7 @@ export default function Hero() {
             </div>
 
             {/* Imagem central */}
-            <div className="absolute bottom-40 left-1/2 -translate-x-1/2">
-              <Image
-                src="/imagem.png"
-                alt="Turntable"
-                width={160}
-                height={120}
-                className="rounded shadow-lg"
-              />
-            </div>
+           
 
             {/* Texto da direita */}
             <div className="absolute bottom-56 right-80 max-w-xs text-right">
@@ -123,26 +123,30 @@ export default function Hero() {
               </p>
             </div>
 
-            {/* Imagem da direita */}
-            <div className="absolute bottom-40 right-24">
-              <Image
-                src="/imagem2.png"
-                alt="Portrait"
-                width={140}
-                height={200}
-                className="rounded shadow-lg"
-              />
-            </div>
+          
           </div>
         </div>
       </div>
 
-      {/* Estilo contorno do texto */}
-      <style jsx>{`
+      {/* Estilo contorno de texto + regras forçadas pro Lottie */}
+      <style jsx global>{`
         .stroke-text {
           -webkit-text-stroke: 1px white;
+        }
+
+        /* força o wrapper interno do lottie e o SVG a ocupar 100% */
+        .lottie-cover, .lottie-cover > div, .lottie-cover > div > svg {
+          width: 100% !important;
+          height: 100% !important;
+          display: block !important;
+        }
+
+        /* evita scroll causado por sub-pixelling */
+        .lottie-cover > div > svg {
+          transform: translateZ(0);
         }
       `}</style>
     </section>
   );
 }
+  
