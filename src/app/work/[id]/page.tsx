@@ -2,30 +2,28 @@
 
 import Image from "next/image";
 import Footer from "@/app/components/Footer";
-import { motion } from "framer-motion";
-import { Variants, easeOut } from "framer-motion";
+import { motion, Variants, easeOut } from "framer-motion";
+
+// ---- animações padrão ---- //
 
 export const fadeUp: Variants = {
-  hidden: { opacity: 0, y: 40, scale: 0.95, filter: "blur(12px)" as any },
+  hidden: { opacity: 0, y: 40, scale: 0.95 },
   show: {
     opacity: 1,
     y: 0,
     scale: 1,
-    filter: "blur(0px)" as any,
     transition: { duration: 1.2, ease: easeOut },
   },
 };
 
 export const fadeImage: Variants = {
-  hidden: { opacity: 0, scale: 0.95, filter: "blur(14px)" as any },
+  hidden: { opacity: 0, scale: 0.95 },
   show: {
     opacity: 1,
     scale: 1,
-    filter: "blur(0px)" as any,
     transition: { duration: 1.4, ease: easeOut },
   },
 };
-
 
 export default function CasePage() {
   return (
@@ -37,6 +35,7 @@ export default function CasePage() {
           variants={fadeImage}
           initial="hidden"
           animate="show"
+          style={{ filter: "blur(14px)" }}
           className="absolute inset-0"
         >
           <Image
@@ -53,6 +52,7 @@ export default function CasePage() {
             variants={fadeUp}
             initial="hidden"
             animate="show"
+            style={{ filter: "blur(12px)" }}
             className="
               absolute inset-0 flex items-center justify-center text-center z-10
               text-[20vw] md:text-[10vw] font-black tracking-tighter
@@ -94,6 +94,7 @@ export default function CasePage() {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true }}
+          style={{ filter: "blur(14px)" }}
         >
           <Image
             src="/gallery/gal1.png"
@@ -109,6 +110,7 @@ export default function CasePage() {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true }}
+          style={{ filter: "blur(14px)" }}
         >
           <Image
             src="/gallery/gal2.png"
@@ -148,6 +150,7 @@ export default function CasePage() {
             initial="hidden"
             whileInView="show"
             viewport={{ once: true }}
+            style={{ filter: "blur(14px)" }}
           >
             <Image
               src={src}
