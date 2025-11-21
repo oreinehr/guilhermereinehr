@@ -1,44 +1,33 @@
 "use client"
 
 import Image from "next/image"
-import { Card} from "../ui/card"
-import { motion } from "framer-motion"
+import { Card } from "../ui/card"
+import { motion, Variants, easeOut } from "framer-motion"
 import { useInView } from "framer-motion"
 import { useRef } from "react"
 
 const projects = [
- 
   {
     title: "Style - Figma Template",
     description: "Figma Template Style",
-    image:
-      "https://i.imgur.com/k0rFK3o.png",
+    image: "https://i.imgur.com/k0rFK3o.png",
     tags: ["template", "figma"],
   },
-
   {
     title: "Mirror - Figma Template",
     description: "Figma Template",
-    image:
-      "https://i.imgur.com/qiUAnNH.png",
-    tags: ["Design, Figma Template"],
+    image: "https://i.imgur.com/qiUAnNH.png",
+    tags: ["Design", "Figma Template"],
   },
-  
   {
     title: "Fresh - Figma Template",
     description: "Personal Design",
-    image:
-      "https://i.imgur.com/yIZFK4c.png",
-    tags: ["Design, AI Art"],
-  },  
-
- 
-
- 
- 
+    image: "https://i.imgur.com/yIZFK4c.png",
+    tags: ["Design", "AI Art"],
+  },
 ]
 
-const container = {
+const container: Variants = {
   hidden: { opacity: 0 },
   show: {
     opacity: 1,
@@ -46,17 +35,16 @@ const container = {
       staggerChildren: 0.2,
     },
   },
-  
 }
 
-const item = {
+const item: Variants = {
   hidden: { opacity: 0, y: 20 },
   show: {
     opacity: 1,
     y: 0,
     transition: {
       duration: 0.5,
-      ease: "easeOut",
+      ease: easeOut,
     },
   },
 }
@@ -77,15 +65,15 @@ export function ProjectGrid() {
         <motion.div key={project.title} variants={item}>
           <Card className="group relative overflow-hidden border-none bg-transparent">
             <Card className="p-0">
-              <div className="relative aspect-[4/3] overflow-hidden ">
+              <div className="relative aspect-[4/3] overflow-hidden">
                 <Image
                   src={project.image || "/placeholder.svg"}
                   alt={project.title}
                   fill
-                  className="object-cover transition-transform duration-500 group-hover:scale-165"
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-black/50 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-              </div>    
+              </div>
               <motion.div
                 className="p-2"
                 initial={{ opacity: 0 }}
@@ -94,9 +82,12 @@ export function ProjectGrid() {
               >
                 <h3 className="text-lg font-semibold">{project.title}</h3>
                 <p className="mt-2 text-sm text-muted-foreground">{project.description}</p>
-                <div className="mt-4 flex gap-2">
+                <div className="mt-4 flex gap-2 flex-wrap">
                   {project.tags.map((tag) => (
-                    <span key={tag} className="rounded-full bg-red-500/10 px-3 py-1 text-xs font-medium text-red-500">
+                    <span
+                      key={tag}
+                      className="rounded-full bg-red-500/10 px-3 py-1 text-xs font-medium text-red-500"
+                    >
                       {tag}
                     </span>
                   ))}
@@ -109,4 +100,3 @@ export function ProjectGrid() {
     </motion.div>
   )
 }
-
