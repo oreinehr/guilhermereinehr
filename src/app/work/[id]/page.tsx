@@ -3,27 +3,26 @@
 import Image from "next/image";
 import Footer from "@/app/components/Footer";
 import { motion } from "framer-motion";
+import { Variants, easeOut } from "framer-motion";
 
-// ---- animações padrão usadas nas outras páginas ---- //
-
-const fadeUp = {
-  hidden: { opacity: 0, y: 40, filter: "blur(12px)", scale: 0.95 },
+export const fadeUp: Variants = {
+  hidden: { opacity: 0, y: 40, scale: 0.95, filter: "blur(12px)" as any },
   show: {
     opacity: 1,
     y: 0,
-    filter: "blur(0px)",
     scale: 1,
-    transition: { duration: 1.2, ease: "easeOut" },
+    filter: "blur(0px)" as any,
+    transition: { duration: 1.2, ease: easeOut },
   },
 };
 
-const fadeImage = {
-  hidden: { opacity: 0, scale: 0.95, filter: "blur(14px)" },
+export const fadeImage: Variants = {
+  hidden: { opacity: 0, scale: 0.95, filter: "blur(14px)" as any },
   show: {
     opacity: 1,
     scale: 1,
-    filter: "blur(0px)",
-    transition: { duration: 1.4, ease: "easeOut" },
+    filter: "blur(0px)" as any,
+    transition: { duration: 1.4, ease: easeOut },
   },
 };
 
