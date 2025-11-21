@@ -9,15 +9,19 @@ function splitWords(text: string) {
 }
 
 /* ANIMAÇÃO INDIVIDUAL DAS PALAVRAS */
-const wordAnimation = {
-  hidden: { opacity: 0, y: 20, filter: "blur(6px)" },
+const wordAnimation: any = {
+  hidden: { opacity: 0, y: 15, filter: "blur(8px)" },
   show: {
     opacity: 1,
     y: 0,
     filter: "blur(0px)",
-    transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] },
+    transition: {
+      duration: 0.55,
+      ease: [0.16, 1, 0.3, 1],
+    },
   },
 };
+
 
 /* TIMING ENTRE PALAVRAS */
 const sentence = {

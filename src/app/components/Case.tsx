@@ -11,18 +11,19 @@ function splitWords(text: string) {
 }
 
 /* ANIMAÇÃO INDIVIDUAL DE CADA PALAVRA */
-const wordAnimation = {
-  hidden: { opacity: 0, y: 20, filter: "blur(3px)" },
+const wordAnimation: any = {
+  hidden: { opacity: 0, y: 15, filter: "blur(8px)" },
   show: {
     opacity: 1,
     y: 0,
     filter: "blur(0px)",
     transition: {
-      duration: 0.9,
-      ease: [0.24, 1, 0.3, 1],
+      duration: 0.55,
+      ease: [0.16, 1, 0.3, 1],
     },
   },
 };
+
 
 /* CONTROLADOR DE TEMPO ENTRE PALAVRAS */
 const sentence = {
