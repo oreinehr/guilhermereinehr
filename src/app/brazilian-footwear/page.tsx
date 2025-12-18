@@ -32,7 +32,7 @@ export default function CasePage() {
             variants={fadeUp}
             initial="hidden"
             animate="show"
-            style={{ filter: "blur(12px)" }}
+            style={{ filter: "blur(0px)" }}
             className="
               absolute inset-0 flex items-center justify-center text-center z-10
               text-[20vw] md:text-[10vw] font-black tracking-tighter

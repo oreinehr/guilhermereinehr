@@ -6,10 +6,10 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import type { Variants } from "framer-motion";
 
-
 function splitWords(text: string): string[] {
   return text.split(" ").map((word) => word + " ");
 }
+
 /* ANIMAÇÃO INDIVIDUAL DE CADA PALAVRA */
 const wordAnimation: Variants = {
   hidden: { opacity: 0, y: 15, filter: "blur(8px)" },
@@ -19,7 +19,7 @@ const wordAnimation: Variants = {
     filter: "blur(0px)",
     transition: {
       duration: 0.55,
-    ease: "easeOut", // válido!
+      ease: "easeOut",
     },
   },
 };
@@ -47,8 +47,7 @@ const fadeUp: Variants = {
     scale: 1,
     transition: {
       duration: 1.2,
-      ease: "easeInOut"
-
+      ease: "easeInOut",
     },
   },
 };
@@ -67,16 +66,13 @@ const fadeImage: Variants = {
     y: 0,
     transition: {
       duration: 1.3,
-     ease: "easeInOut"
-
+      ease: "easeInOut",
     },
   },
 };
 
-
-
 /* CARD INDIVIDUAL */
-function CaseCard({ src, title, id }: { src: string; title: string; id: number }) {
+function CaseCard({ src, title, slug }: { src: string; title: string; slug: string }) {
   const [showMobileContent, setShowMobileContent] = useState(false);
 
   useEffect(() => {
@@ -92,14 +88,14 @@ function CaseCard({ src, title, id }: { src: string; title: string; id: number }
       initial="hidden"
       whileInView="show"
       viewport={{ once: true }}
-      className="relative w-full h-96 md:h-[36rem] overflow-hidden group cursor-pointer rounded-lg"
+      className="relative w-full h-[450px] md:h-[520px] overflow-hidden group cursor-pointer rounded-lg"
     >
       {/* Imagem */}
       <motion.div
         initial="hidden"
         whileInView="show"
-        viewport={{ once: true }}
         variants={fadeImage}
+        viewport={{ once: true }}
         className="absolute inset-0"
       >
         <Image
@@ -136,7 +132,7 @@ function CaseCard({ src, title, id }: { src: string; title: string; id: number }
 
         <motion.div variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }}>
           <Link
-            href={`/work/${id}`}
+            href={`/${slug}`}
             className="px-20 py-4 font-semibold border border-white rounded-lg text-white hover:bg-white hover:text-black transition"
           >
             Ver projeto
@@ -150,16 +146,14 @@ function CaseCard({ src, title, id }: { src: string; title: string; id: number }
 /* COMPONENTE PRINCIPAL */
 export default function Cases() {
   const caseItems = [
-    { id: 1, src: "/planeta.png", title: "Planeta Atlântida" },
-    { id: 2, src: "/marinapark.png", title: "Marina Park" },
-    { id: 3, src: "/melissa.png", title: "Melissa Simonett" },
-    { id: 4, src: "/mac.png", title: "Brazilian Footwear" },
+    { slug: "planeta", src: "/planetaatl.png", title: "Planeta Atlântida" },
+    { slug: "marina", src: "/marinapark.png", title: "Marina Park" },
   ];
 
   return (
     <section className="w-full bg-black text-white py-16 px-4 md:px-12">
 
-      {/* Título com animação PALAVRA POR PALAVRA */}
+      {/* Título com animação */}
       <motion.h2
         variants={sentence}
         initial="hidden"
@@ -167,7 +161,6 @@ export default function Cases() {
         viewport={{ once: true }}
         className="max-w-3xl text-2xl md:text-4xl font-light whitespace-pre-wrap mb-12"
       >
-        {/* linha 1 */}
         {splitWords("Crafting immersive digital experiences").map((word, i) => (
           <motion.span key={i} variants={wordAnimation} className="inline-block text-[#F2360C] font-medium">
             {word}
@@ -175,20 +168,16 @@ export default function Cases() {
         ))}
 
         {splitWords("through UX/UI, Motion design & prototype.").map((word, i) => (
-          <motion.span key={i} variants={wordAnimation} className="inline-block text-white ">
+          <motion.span key={i} variants={wordAnimation} className="inline-block text-white">
             {word}
           </motion.span>
         ))}
-
-        
-
-      
       </motion.h2>
 
-      {/* GRID */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-2 mb-6">
+      {/* GRID DE CASES */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full mb-16">
         {caseItems.map((c) => (
-          <CaseCard key={c.id} src={c.src} title={c.title} id={c.id} />
+          <CaseCard key={c.slug} src={c.src} title={c.title} slug={c.slug} />
         ))}
       </div>
 

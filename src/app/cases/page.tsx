@@ -9,7 +9,7 @@ import { cases } from "../data/cases";
 // ---------------------------
 // CaseCard
 // ---------------------------
-function CaseCard({ src, title, id }: { src: string; title: string; id: number }) {
+function CaseCard({ src, title, slug }: { src: string; title: string; slug: string }) {
   const [showMobileContent, setShowMobileContent] = useState(false);
 
   const isVideo = typeof src === "string" && src.endsWith(".mp4");
@@ -61,7 +61,7 @@ function CaseCard({ src, title, id }: { src: string; title: string; id: number }
         </h3>
 
         <Link
-          href={`/work/${id}`}
+          href={`/${slug}`}
           className="px-10 py-3 font-semibold border border-white rounded-lg text-white hover:bg-white hover:text-black transition"
         >
           Ver projeto
@@ -152,7 +152,7 @@ export default function Work() {
         {/* Grid de Cases */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
           {filteredCases.map((c) => (
-            <CaseCard key={c.id} src={c.src} title={c.title} id={c.id} />
+            <CaseCard key={c.slug} src={c.src} title={c.title} slug={c.slug} />
           ))}
         </div>
       </section>
