@@ -3,16 +3,15 @@
 import Image from "next/image";
 import Footer from "@/app/components/Footer";
 import { motion } from "framer-motion";
-import { fadeUp, fadeImage } from "@/app/animations/variants"; // import do arquivo separado
+import { fadeUp, fadeImage } from "@/app/animations/variants";
 import Header from "../components/Header";
 
 export default function CasePage() {
   return (
     <main className="bg-black text-white overflow-x-hidden">
+      <Header />
 
-    <Header/>
-
-      {/* HERO IMAGEM */}
+      {/* HERO IMAGE */}
       <section className="relative w-full h-screen">
         <motion.div
           variants={fadeImage}
@@ -23,13 +22,13 @@ export default function CasePage() {
         >
           <Image
             src="/planetaatl.png"
-            alt="Planeta"
+            alt="Planeta Atlântida"
             fill
             className="object-cover"
           />
         </motion.div>
 
-        {/* TÍTULO CENTRAL */}
+        {/* CENTER TITLE */}
         <section className="relative w-full h-screen flex items-center justify-center">
           <motion.h1
             variants={fadeUp}
@@ -42,12 +41,11 @@ export default function CasePage() {
               text-transparent stroke-text leading-[0.8]
             "
           >
-            Planeta Atlântida
           </motion.h1>
         </section>
       </section>
 
-      {/* BLOCO TEXTO 1 */}
+      {/* TEXT BLOCK 1 */}
       <div className="px-6 md:px-16 py-12">
         <motion.h1
           variants={fadeUp}
@@ -57,21 +55,22 @@ export default function CasePage() {
           className="max-w-6xl text-2xl md:text-4xl font-light"
         >
           <span className="text-[#F2360C] font-medium">Yo,</span>{" "}
-          desenvolver o site do Planeta Atlântida foi uma das experiências mais
-          intensas, desafiadoras e, ao mesmo tempo, gratificantes da minha
-          trajetória como UX/UI Designer.
+          developing the Planeta Atlântida website was one of the most intense,
+          challenging, and at the same time rewarding experiences of my journey
+          as a UX/UI Designer. The project came with huge expectations: translating
+          all the energy of the largest festival in southern Brazil into a fluid,
+          modern, and immersive digital experience.
           <span className="font-medium">
             {" "}
-            O projeto chegou com uma expectativa enorme: traduzir toda a energia
-            do maior festival do sul do Brasil em uma experiência digital fluida,
-            moderna e imersiva.
+            The project came with huge expectations: translating all the energy
+            of the largest festival in southern Brazil into a fluid, modern, and
+            immersive digital experience.
           </span>
         </motion.h1>
       </div>
 
-      {/* GALERIA + TEXTO + GALERIA */}
+      {/* GALLERY + TEXT + GALLERY */}
       <section className="w-full flex flex-col gap-[2.5px] md:gap-2 px-4 md:px-16 py-12 md:py-16">
-
         <motion.div
           variants={fadeImage}
           initial="hidden"
@@ -83,7 +82,7 @@ export default function CasePage() {
             src="/gallery/gal1.png"
             width={1600}
             height={2000}
-            alt="gal1"
+            alt="Gallery image 1"
             className="w-full h-auto object-cover"
           />
         </motion.div>
@@ -96,15 +95,15 @@ export default function CasePage() {
           style={{ filter: "blur(0px)" }}
         >
           <Image
-            src="/gallery/gal2.png"
+            src="/pla.png"
             width={1600}
             height={2000}
-            alt="gal2"
+            alt="Gallery image 2"
             className="w-full h-auto object-cover"
           />
         </motion.div>
 
-        {/* TEXTO 2 */}
+        {/* TEXT 2 */}
         <div className="px-6 md:px-16 py-12">
           <motion.h1
             variants={fadeUp}
@@ -113,20 +112,20 @@ export default function CasePage() {
             viewport={{ once: true }}
             className="max-w-6xl text-2xl md:text-4xl font-light"
           >
-            <span className="text-[#F2360C] font-medium">Além</span>{" "}
-            da pressão do tempo, existia a responsabilidade de criar algo que
-            estivesse à altura do evento. A navegação precisava ser intuitiva
-            mesmo com grande volume de conteúdo,
+            <span className="text-[#F2360C] font-medium">Beyond</span>{" "}
+            the time pressure, there was the responsibility of creating something
+            worthy of the event. Navigation needed to remain intuitive even with
+            a large volume of content,
             <span className="font-medium">
               {" "}
-              e a estética precisava conversar com um público jovem, exigente e
-              acostumado com experiências digitais de alto impacto.
+              and the aesthetic had to resonate with a young, demanding audience
+              accustomed to high-impact digital experiences.
             </span>
           </motion.h1>
         </div>
 
-        {/* MAIS IMAGENS */}
-        {[ "/grid.png", "/gallery/gal3.png", "/gallery/gal5.png" ].map((src, i) => (
+        {/* MORE IMAGES */}
+        {["/gallery/atlantida.png", "/lpla.png", "/color.png"].map((src, i) => (
           <motion.div
             key={i}
             variants={fadeImage}
@@ -139,13 +138,13 @@ export default function CasePage() {
               src={src}
               width={1600}
               height={2000}
-              alt="gallery"
+              alt="Gallery"
               className="w-full h-auto object-cover"
             />
           </motion.div>
         ))}
 
-        {/* TEXTO 3 */}
+        {/* TEXT 3 */}
         <div className="px-6 md:px-16 py-12">
           <motion.h1
             variants={fadeUp}
@@ -154,19 +153,19 @@ export default function CasePage() {
             viewport={{ once: true }}
             className="max-w-6xl text-2xl md:text-4xl font-light"
           >
-            <span className="text-[#F2360C] font-medium">O resultado final</span>{" "}
-            não foi apenas um site funcional: foi uma experiência digital que
-            carrega a alma do Planeta Atlântida. Um projeto grande, significativo
-            e especial,
+            <span className="text-[#F2360C] font-medium">The final result</span>{" "}
+            was not just a functional website: it became a digital experience
+            that carries the soul of Planeta Atlântida. A large, meaningful, and
+            special project,
             <span className="font-medium">
               {" "}
-              que reforça o poder do design em dar vida a marcas icônicas e
-              transformar a relação do público com o evento.
+              reinforcing the power of design to bring iconic brands to life and
+              transform the audience’s relationship with the event.
             </span>
           </motion.h1>
         </div>
 
-        {/* BOTÃO */}
+        {/* BUTTON */}
         <motion.div
           variants={fadeUp}
           initial="hidden"
@@ -180,7 +179,7 @@ export default function CasePage() {
             rel="noopener noreferrer"
             className="border border-[#F2360C] text-[#F2360C] font-medium px-14 py-4 rounded-lg text-sm md:text-base hover:bg-[#F2360C] hover:text-black transition"
           >
-            Visitar site oficial
+            Visit official website
           </a>
         </motion.div>
       </section>

@@ -49,7 +49,7 @@ export default function About() {
     <section className="w-full bg-black text-white">
 
       {/* TEXTO PRINCIPAL COM ANIMAÇÃO PALAVRA POR PALAVRA */}
-      <div className="px-6 md:px-16 py-20">
+      <div className="px-6 md:px-16 py-4">
         <motion.h1
           variants={sentence}
           initial="hidden"
@@ -94,7 +94,7 @@ export default function About() {
       </div>
 
       {/* CARD COM AS LISTAS + FADE UP */}
-      <div className="relative w-full flex justify-center items-center py-40">
+      <div className="relative w-full flex justify-center items-center py-16">
 
         <div className="absolute inset-0 -z-100">
           <Image

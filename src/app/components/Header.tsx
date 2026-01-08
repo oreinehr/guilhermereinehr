@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { motion, useAnimation } from "framer-motion";
+import { motion, useAnimation, AnimatePresence } from "framer-motion";
 import { circOut } from "framer-motion";
 
 /* --- ANIMAÇÕES --- */
@@ -24,15 +24,14 @@ export default function Header() {
   const controls = useAnimation();
   const [lastScrollY, setLastScrollY] = useState(0);
 
+  /* --- SCROLL BEHAVIOR --- */
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
 
       if (currentScrollY < lastScrollY) {
-        // scroll pra cima → mostra header
         controls.start("show");
       } else {
-        // scroll pra baixo → esconde header
         controls.start("hidden");
       }
 
@@ -43,6 +42,11 @@ export default function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [lastScrollY, controls]);
 
+  /* --- SCROLL LOCK QUANDO MENU ABERTO --- */
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? "hidden" : "auto";
+  }, [menuOpen]);
+
   return (
     <>
       {/* HEADER */}
@@ -52,8 +56,8 @@ export default function Header() {
         animate={controls}
         className="fixed top-0 left-0 w-full z-50 bg-transparent"
       >
-        {/* Desktop */}
-        <div className="hidden md:flex justify-between items-center px-8 py-6 text-sm text-white">
+        {/* DESKTOP */}
+        <div className="hidden md:flex justify-between items-center px-8 py-6 text-white">
           <Link href="/">
             <h1 className="font-black text-4xl tracking-tighter cursor-pointer">
               reinehr
@@ -61,66 +65,81 @@ export default function Header() {
           </Link>
 
           <nav className="flex items-center gap-12 text-xl">
-            <Link href="/cases">Selected work (05)</Link>
-            <a href="#">Info</a>
-            <a href="#">Skills</a>
-            <a href="#">Contact</a>
-            <div className="flex gap-3">
-              <a href="#">(IG)</a>
-              <a href="#">(LI)</a>
+            <Link href="/cases">Selected work (03)</Link>
+            <Link href="/contact">Contact</Link>
+            <div className="flex gap-4">
+              <a href="https://www.instagram.com/reinehrrl/">(IG)</a>
+              <a href="https://www.linkedin.com/in/guilherme-reinehr-a24117340/">(LI)</a>
+              <a href="https://www.behance.net/guilhermereinehr">(BE)</a>
             </div>
           </nav>
         </div>
 
-        {/* Mobile */}
+        {/* MOBILE HEADER */}
         <div className="md:hidden flex justify-between items-center px-6 py-4 text-white">
           <Link href="/">
-            <h1 className="font-black text-3xl tracking-tighter cursor-pointer">
+            <h1 className="font-black text-3xl tracking-tighter">
               reinehr
             </h1>
           </Link>
 
           <button
-            className="flex flex-col justify-between w-6 h-6"
-            onClick={() => setMenuOpen(!menuOpen)}
+            onClick={() => setMenuOpen(true)}
+            className="flex flex-col gap-1"
           >
-            <span
-              className={`block h-0.5 w-full bg-white transition-transform ${
-                menuOpen ? "rotate-45 translate-y-2" : ""
-              }`}
-            />
-            <span
-              className={`block h-0.5 w-full bg-white transition-opacity ${
-                menuOpen ? "opacity-0" : "opacity-100"
-              }`}
-            />
-            <span
-              className={`block h-0.5 w-full bg-white transition-transform ${
-                menuOpen ? "-rotate-45 -translate-y-2" : ""
-              }`}
-            />
+            <span className="w-6 h-[2px] bg-white" />
+            <span className="w-6 h-[2px] bg-white" />
+            <span className="w-6 h-[2px] bg-white" />
           </button>
         </div>
       </motion.header>
 
-      {/* MENU MOBILE */}
-      {menuOpen && (
-        <motion.nav
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.3, ease: circOut }}
-          className="fixed top-16 left-0 w-full bg-black bg-opacity-90 flex flex-col items-center gap-4 py-6 text-xl text-white z-40 md:hidden"
-        >
-          <Link href="/work">Selected work (05)</Link>
-          <a href="#">Info</a>
-          <a href="#">Skills</a>
-          <a href="#">Contact</a>
-          <div className="flex gap-4">
-            <a href="#">(IG)</a>
-            <a href="#">(LI)</a>
-          </div>
-        </motion.nav>
-      )}
+      {/* MENU MOBILE FULLSCREEN */}
+      <AnimatePresence>
+        {menuOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3, ease: circOut }}
+            className="fixed inset-0 z-[999] bg-black text-white md:hidden"
+          >
+            {/* TOPO */}
+            <div className="flex justify-between items-center px-6 py-4">
+              <Link href="/" onClick={() => setMenuOpen(false)}>
+                <h1 className="font-black text-3xl tracking-tighter">
+                  reinehr
+                </h1>
+              </Link>
+
+              <button
+                onClick={() => setMenuOpen(false)}
+                className="text-3xl leading-none"
+              >
+                ✕
+              </button>
+            </div>
+
+            {/* LINKS */}
+            <div className="flex flex-col gap-4 px-6 mt-12 text-3xl font-black">
+              <Link href="/cases" onClick={() => setMenuOpen(false)}>
+                Selected work (03)
+              </Link>
+
+              <Link href="/contact" onClick={() => setMenuOpen(false)}>
+                Contact
+              </Link>
+
+              {/* SOCIAIS */}
+              <div className="flex gap-12 text-2xl mt-4">
+                <a href="https://www.instagram.com/reinehrrl/">(IG)</a>
+                <a href="https://www.linkedin.com/in/guilherme-reinehr-a24117340/">(LI)</a>
+                <a href="https://www.behance.net/guilhermereinehr">(BE)</a>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   );
 }

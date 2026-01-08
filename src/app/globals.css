@@ -6,6 +6,14 @@ html, body {
   overflow-x: hidden;
 }
 
+/* Adicione no global.css ou styles.css */
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-none {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;     /* Firefox */
+}
 
 .stroke-text {
   -webkit-text-stroke: 2px white; /* contorno branco */
@@ -61,3 +69,33 @@ html, body {
 }
 
 
+.stroke-text {
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.3);
+}
+
+.contact-input {
+  width: 100%;
+  border-radius: 0.75rem;
+  padding: 0.9rem 1rem;
+  background: rgba(0, 0, 0, 0.65);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  outline: none;
+  transition: border 0.2s ease;
+}
+
+.contact-input::placeholder {
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.contact-input:focus {
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+} 
