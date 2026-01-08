@@ -8,6 +8,7 @@ import { Metadata } from "next"
 export const metadata: Metadata = {
   title: "Reinehr",
   description: "Portfolio Website",
+  
 }
 
 const archivo = Archivo({

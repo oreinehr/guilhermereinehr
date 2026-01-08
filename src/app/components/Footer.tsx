@@ -30,7 +30,7 @@ export default function Footer() {
       {/* Direitos reservados */}
       <div className="relative z-30 flex justify-center pb-6">
         <p className="text-sm md:text-base text-white/60">
-          © 2025 Guilherme Reinehr — All rights reserved.
+          © 2026 Guilherme Reinehr — All rights reserved.
         </p>
       </div>
     </footer>
