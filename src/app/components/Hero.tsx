@@ -28,7 +28,7 @@ const fadeUp = {
 };
 
 export default function Hero() {
-  const [menuOpen, setMenuOpen] = useState(false);
+  
 
   return (
     <section className="relative h-screen w-screen overflow-hidden text-white">
