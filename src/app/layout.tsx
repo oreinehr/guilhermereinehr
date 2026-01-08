@@ -24,6 +24,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="scroll-smooth">
+           <link rel="icon" href="/icon.png" />
       <body className={cn(archivo.className, "bg-black text-white antialiased")}>
         <LoaderWrapper />
         {children}

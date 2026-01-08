@@ -4,12 +4,12 @@ import Image from "next/image";
 import Footer from "@/app/components/Footer";
 import { motion } from "framer-motion";
 import { fadeUp, fadeImage } from "@/app/animations/variants";
-import Header from "../components/Header";
+import HeaderBF from "../components/HeaderBF";
 
 export default function CasePage() {
   return (
     <main className="bg-black text-white overflow-x-hidden">
-      <Header/>
+      <HeaderBF/>
       {/* HERO IMAGE */}
       <section className="relative w-full h-screen">
         <motion.div
