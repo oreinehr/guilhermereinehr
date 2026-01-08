@@ -1,14 +1,16 @@
 import "./globals.css"
-import { cn } from "./components/ui/lib/utils"
+import type { Metadata } from "next"
 import type React from "react"
 import { Archivo } from "next/font/google"
+import { cn } from "./components/ui/lib/utils"
 import LoaderWrapper from "./components/LoaderWrapper"
-import { Metadata } from "next"
 
 export const metadata: Metadata = {
   title: "Reinehr",
   description: "Portfolio Website",
-  
+  icons: {
+    icon: "/favicon.ico",
+  },
 }
 
 const archivo = Archivo({
@@ -24,8 +26,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="scroll-smooth">
-           <link rel="icon" href="/icon.png" />
-      <body className={cn(archivo.className, "bg-black text-white antialiased")}>
+      <body
+        className={cn(
+          archivo.className,
+          "bg-black text-white antialiased"
+        )}
+      >
         <LoaderWrapper />
         {children}
       </body>
