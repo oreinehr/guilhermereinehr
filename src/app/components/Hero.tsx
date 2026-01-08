@@ -54,46 +54,54 @@ export default function Hero() {
         </div>
 
         {/* DESKTOP */}
-        <div className="hidden md:flex w-full h-full items-center justify-center overflow-x-hidden">
+   <div className="hidden md:flex w-full h-full items-center justify-center px-12">
+  <div className="flex flex-col items-center w-full max-w-screen-xl">
 
-          {/* GRUPO CENTRAL */}
-          <div className="relative w-full flex items-center justify-center max-w-screen">
+    {/* TÍTULO CENTRAL */}
+    <motion.h2
+      variants={fadeUp}
+      initial="hidden"
+      animate="show"
+      className="
+        text-[clamp(6rem,22vw,18rem)]
+        font-black
+        tracking-tighter
+        text-transparent
+        stroke-text
+        leading-none
+        text-center
+      "
+    >
+      reinehr
+    </motion.h2>
 
-            {/* TEXTO ESQUERDO */}
-            <motion.div
-  variants={fadeUp}
-  initial="hidden"
-  animate="show"
-  className="absolute top-1/2 -translate-y-1/2 left-0 px-12 max-w-xs"
->
-  <p className="text-xl leading-snug">
-    Creating beauty in Brazil <br /> and around the world
-  </p>
-</motion.div>
+    {/* TEXTOS ABAIXO DO TÍTULO */}
+    <div className="mt-12 grid grid-cols-2 w-full max-w-4xl">
 
-{/* TÍTULO */}
-<motion.h2
-  variants={fadeUp}
-  initial="hidden"
-  animate="show"
-  className="text-[clamp(6rem,24vw,20rem)] font-black tracking-tighter text-transparent stroke-text leading-none text-center mx-auto"
->
-  reinehr
-</motion.h2>
+      {/* TEXTO ESQUERDO */}
+      <motion.p
+        variants={fadeUp}
+        initial="hidden"
+        animate="show"
+        className="text-xl leading-snug text-left pr-12"
+      >
+        Creating beauty in Brazil <br /> and around the world
+      </motion.p>
 
-{/* TEXTO DIREITO */}
-<motion.div
-  variants={fadeUp}
-  initial="hidden"
-  animate="show"
-  className="absolute top-1/2 -translate-y-1/2 right-0 px-6 max-w-xs text-right"
->
-  <p className="text-xl leading-snug">
-    UX/UI Design, Motion, <br /> Product Design & Prototype.
-  </p>
-</motion.div>
-          </div>
-        </div>
+      {/* TEXTO DIREITO */}
+      <motion.p
+        variants={fadeUp}
+        initial="hidden"
+        animate="show"
+        className="text-xl leading-snug text-right pl-12"
+      >
+        UX/UI Design, Motion, <br /> Product Design & Prototype.
+      </motion.p>
+
+    </div>
+  </div>
+</div>
+
       </div>
 
       {/* STYLES */}
