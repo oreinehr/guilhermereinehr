@@ -10,7 +10,7 @@ export default function CasePage() {
       <Header/>
       <section className="relative w-full h-screen">
         <Image
-          src="/Marinapark.png"
+          src="/marinapark.png"
           alt="Marina Park"
           fill
           className="object-cover"

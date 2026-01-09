@@ -17,7 +17,7 @@ export default function Footer() {
   </div>
 </div>
       {/* Cubo atrás */}
-      <div className="absolute inset-0 flex items-center justify-center z-10 opacity-40">
+      <div className="absolute inset-0 flex items-center justify-center z-10 opacity-100">
         <Image
           src="/abstract.png"
           alt="3D Cube"
