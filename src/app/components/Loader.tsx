@@ -1,34 +1,29 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import Lottie from "lottie-react";
-import loaderAnim from "../data/load.json"; // <-- seu arquivo Lottie de loading
+import loaderAnim from "../data/load.json";
 
-export default function Loader() {
-  const [visible, setVisible] = useState(true);
+type LoaderProps = {
+  visible: boolean;
+};
 
-  useEffect(() => {
-    // Tempo de fade — ajuste se quiser
-    const timer = setTimeout(() => {
-      setVisible(false);
-    }, 4000); // 2s
-
-    return () => clearTimeout(timer);
-  }, []);
-
+export default function Loader({ visible }: LoaderProps) {
   return (
     <div
       className={`
-        fixed inset-0 bg-black flex items-center justify-center z-[9999]
-        transition-opacity duration-700
-        ${visible ? "opacity-100" : "opacity-0 pointer-events-none"}
+        fixed inset-0 z-[9999]
+        flex items-center justify-center
+        bg-black
+        transition-opacity duration-700 ease-out
+        ${visible ? "opacity-100" : "opacity-0"}
       `}
     >
       <Lottie
         animationData={loaderAnim}
-        loop={true}
-        autoplay={true}
-        className="w-full h-screen md:w-cover md:h-screen"
+        loop
+        autoplay
+        renderer="canvas"
+        className="w-[220px] h-[220px]"
       />
     </div>
   );

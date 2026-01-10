@@ -4,20 +4,29 @@ import { useEffect, useState } from "react";
 import Loader from "./Loader";
 
 export default function LoaderWrapper() {
-  const [show, setShow] = useState(false);
+  const [mounted, setMounted] = useState(false);
+  const [visible, setVisible] = useState(true);
 
   useEffect(() => {
-    const hasVisited = localStorage.getItem("hasVisited");
+    const hasVisited = sessionStorage.getItem("hasVisited");
 
     if (!hasVisited) {
-      setShow(true);
-      localStorage.setItem("hasVisited", "true");
+      setMounted(true);
+      sessionStorage.setItem("hasVisited", "true");
 
-      setTimeout(() => setShow(false), 2500); // tempo do seu loader
+      // tempo visível do loader
+      setTimeout(() => {
+        setVisible(false);
+      }, 2500);
+
+      // remove do DOM APÓS o fade
+      setTimeout(() => {
+        setMounted(false);
+      }, 3200);
     }
   }, []);
 
-  if (!show) return null;
+  if (!mounted) return null;
 
-  return <Loader />;
+  return <Loader visible={visible} />;
 }

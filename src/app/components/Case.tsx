@@ -132,7 +132,7 @@ function CaseCard({
               text-white hover:bg-white hover:text-black transition
             "
           >
-            Ver projeto
+            See Project
           </Link>
         </motion.div>
       </div>
