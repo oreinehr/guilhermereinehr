@@ -5,7 +5,11 @@
 html, body {
   overflow-x: hidden;
 }
-
+.hero-lottie svg {
+  width: 100vw !important;
+  height: 100vh !important;
+}
+  
 /* Adicione no global.css ou styles.css */
 .scrollbar-none::-webkit-scrollbar {
   display: none;

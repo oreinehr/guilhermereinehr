@@ -18,12 +18,15 @@ export default function Loader({ visible }: LoaderProps) {
         ${visible ? "opacity-100" : "opacity-0"}
       `}
     >
-      <Lottie
-        animationData={loaderAnim}
-        loop
-        autoplay
-        className="w-[220px] h-[220px]"
-      />
+      {/* WRAPPER garante centro */}
+      <div className="w-[220px] h-[220px] flex items-center justify-center">
+        <Lottie
+          animationData={loaderAnim}
+          loop
+          autoplay
+          style={{ width: "100%", height: "100%" }}
+        />
+      </div>
     </div>
   );
 }
