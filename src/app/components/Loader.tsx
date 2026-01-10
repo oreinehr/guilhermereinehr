@@ -22,7 +22,6 @@ export default function Loader({ visible }: LoaderProps) {
         animationData={loaderAnim}
         loop
         autoplay
-        renderer="canvas"
         className="w-[220px] h-[220px]"
       />
     </div>
