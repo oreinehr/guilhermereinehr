@@ -6,7 +6,7 @@ import { cn } from "./components/ui/lib/utils";
 import LoaderWrapper from "./components/LoaderWrapper";
 
 export const metadata: Metadata = {
-  title: "R",
+  title: "reinehr",
   description: "Portfolio Website",
   icons: {
     icon: "/favicon.ico",
