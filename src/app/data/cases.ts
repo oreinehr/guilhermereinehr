@@ -37,5 +37,14 @@ export const cases: CaseType[] = [
     description: "Visual Identity for a personal project",
     slug: "brazilian-footwear",
   },
+  {
+    id: 4,
+    src: "/conceito.mp4",
+    alt: "Mac",
+    category: "Motion",
+    title: "Conceito",
+    description: "Motion for Conceito",
+    slug: "conceito",
+  },
 ]
 

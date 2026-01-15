@@ -65,7 +65,7 @@ export default function HeaderBF() {
           </Link>
 
           <nav className="flex items-center gap-12 text-xl">
-            <Link href="/cases">Selected work (03)</Link>
+            <Link href="/cases">Selected work (04)</Link>
             <Link href="/contact">Contact</Link>
             <div className="flex gap-4">
               <a href="https://www.instagram.com/reinehrrl/">(IG)</a>

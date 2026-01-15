@@ -16,12 +16,12 @@ function splitWords(text: string): string[] {
    ANIMAÇÕES
 ========================= */
 const wordAnimation: Variants = {
-  hidden: { opacity: 0, y: 15, filter: "blur(8px)" },
+  hidden: { opacity: 0, y: 16, filter: "blur(10px)" },
   show: {
     opacity: 1,
     y: 0,
     filter: "blur(0px)",
-    transition: { duration: 0.55, ease: "easeOut" },
+    transition: { duration: 0.6, ease: "easeOut" },
   },
 };
 
@@ -34,30 +34,30 @@ const fadeUp: Variants = {
   hidden: {
     opacity: 0,
     y: 40,
+    scale: 0.96,
     filter: "blur(12px)",
-    scale: 0.95,
   },
   show: {
     opacity: 1,
     y: 0,
-    filter: "blur(0px)",
     scale: 1,
-    transition: { duration: 1.2, ease: "easeInOut" },
+    filter: "blur(0px)",
+    transition: { duration: 1.1, ease: "easeInOut" },
   },
 };
 
-const fadeImage: Variants = {
+const fadeMedia: Variants = {
   hidden: {
     opacity: 0,
-    scale: 1.08,
-    filter: "blur(14px)",
+    scale: 1.06,
     y: 30,
+    filter: "blur(14px)",
   },
   show: {
     opacity: 1,
     scale: 1,
-    filter: "blur(0px)",
     y: 0,
+    filter: "blur(0px)",
     transition: { duration: 1.3, ease: "easeInOut" },
   },
 };
@@ -69,28 +69,44 @@ function CaseCard({
   src,
   title,
   slug,
+  type,
+  className,
 }: {
   src: string;
   title: string;
   slug: string;
+  type: "image" | "video";
+  className?: string;
 }) {
   return (
     <motion.div
-      variants={fadeImage}
+      variants={fadeMedia}
       initial="hidden"
       whileInView="show"
       viewport={{ once: true }}
-      className="relative w-full h-[450px] md:h-[520px] overflow-hidden rounded-lg group cursor-pointer"
+      className={`relative w-full h-full overflow-hidden rounded-2xl group ${className}`}
     >
-      {/* IMAGEM */}
-      <Image
-        src={src}
-        alt={title}
-        fill
-        className="object-cover transition-transform duration-700 ease-out md:group-hover:scale-110"
-      />
+      {/* MEDIA */}
+      {type === "image" ? (
+        <Image
+          src={src}
+          alt={title}
+          fill
+          priority
+          className="object-cover transition-transform duration-700 ease-out md:group-hover:scale-105"
+        />
+      ) : (
+        <video
+          src={src}
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out md:group-hover:scale-105"
+        />
+      )}
 
-      {/* OVERLAY — fixo no mobile, hover no desktop */}
+      {/* OVERLAY */}
       <div
         className="
           absolute inset-0 bg-black/60
@@ -100,7 +116,7 @@ function CaseCard({
         "
       />
 
-      {/* CONTEÚDO */}
+      {/* CONTENT */}
       <div
         className="
           absolute inset-0 flex flex-col items-center justify-center text-center
@@ -114,7 +130,7 @@ function CaseCard({
           initial="hidden"
           whileInView="show"
           viewport={{ once: true }}
-          className="text-4xl md:text-5xl font-black mb-4 tracking-tight"
+          className="text-3xl md:text-4xl font-black mb-6 tracking-tight"
         >
           {title}
         </motion.h3>
@@ -128,7 +144,7 @@ function CaseCard({
           <Link
             href={`/${slug}`}
             className="
-              px-16 py-4 font-semibold border border-white rounded-lg
+              px-14 py-4 font-semibold border border-white rounded-lg
               text-white hover:bg-white hover:text-black transition
             "
           >
@@ -144,15 +160,10 @@ function CaseCard({
    COMPONENTE PRINCIPAL
 ========================= */
 export default function Cases() {
-  const caseItems = [
-    { slug: "planeta", src: "/planetaatl.png", title: "Planeta Atlântida" },
-    { slug: "marina", src: "/marinapark.png", title: "Marina Park" },
-  ];
-
   return (
-    <section className="w-full bg-black text-white py-12 px-4 md:px-12">
+    <section className="w-full bg-black text-white py-16 px-4 md:px-12">
       {/* TÍTULO */}
-      <motion.h2
+     <motion.h2
         variants={sentence}
         initial="hidden"
         whileInView="show"
@@ -176,16 +187,49 @@ export default function Cases() {
         ))}
       </motion.h2>
 
-      {/* GRID */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full mb-8">
-        {caseItems.map((item) => (
-          <CaseCard
-            key={item.slug}
-            src={item.src}
-            title={item.title}
-            slug={item.slug}
-          />
-        ))}
+      {/* BENTO GRID */}
+      <div
+        className="
+          grid
+          grid-cols-1
+          md:grid-cols-4
+          md:grid-rows-2
+          gap-4
+          mb-16
+          md:min-h-[720px]
+        "
+      >
+        <CaseCard
+          src="/planetaatl.png"
+          title="Planeta Atlântida"
+          slug="planeta"
+          type="image"
+          className="md:col-span-2 md:row-span-2"
+        />
+
+        <CaseCard
+          src="/marinapark.png"
+          title="Marina Park"
+          slug="marina"
+          type="image"
+          className="md:col-span-1 md:row-span-2"
+        />
+
+        <CaseCard
+          src="/bfmockup.png"
+          title="Brazilian Footwear"
+          slug="brazilian-footwear"
+          type="image"
+          className="md:col-span-1 md:row-span-1"
+        />
+
+        <CaseCard
+          src="/conceito.mp4"
+          title="Conceito"
+          slug="conceito"
+          type="video"
+          className="md:col-span-1 md:row-span-1"
+        />
       </div>
 
       {/* CTA */}
@@ -199,9 +243,14 @@ export default function Cases() {
         <Link
           href="/cases"
           className="
-            border border-[#F2360C] text-[#F2360C]
-            font-medium px-14 py-4 rounded-lg
-            hover:bg-[#F2360C] hover:text-black transition
+            border border-[#F2360C]
+            text-[#F2360C]
+            font-medium
+            px-16 py-5
+            rounded-xl
+            hover:bg-[#F2360C]
+            hover:text-black
+            transition
           "
         >
           See all cases
