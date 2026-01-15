@@ -1,105 +1,108 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+  @tailwind base;
+  @tailwind components;
+  @tailwind utilities;
 
-html, body {
-  overflow-x: hidden;
-}
-.hero-lottie svg {
-  width: 100vw !important;
-  height: 100vh !important;
-}
-  
-/* Adicione no global.css ou styles.css */
-.scrollbar-none::-webkit-scrollbar {
-  display: none;
-}
-.scrollbar-none {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;     /* Firefox */
-}
-
-.stroke-text {
-  -webkit-text-stroke: 2px white; /* contorno branco */
-  color: transparent;             /* sem preenchimento */
-}
-
-@keyframes marquee {
-  0% {
-    transform: translateX(0%);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
-}
-
-.animate-marquee {
-  animation: marquee 20s linear infinite;
-}
-
-@layer base {
-  :root {
-    --background: 0 0% 0%;
-    --foreground: 0 0% 100%;
-    --card: 0 0% 4%;
-    --card-foreground: 0 0% 100%;
-    --popover: 0 0% 4%;
-    --popover-foreground: 0 0% 100%;
-    --primary: 0 0% 100%;
-    --primary-foreground: 0 0% 0%;
-    --secondary: 0 0% 14.9%;
-    --secondary-foreground: 0 0% 100%;
-    --muted: 0 0% 14.9%;
-    --muted-foreground: 0 0% 63.9%;
-    --accent: 0 0% 14.9%;
-    --accent-foreground: 0 0% 100%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 100%;
-    --border: 0 0% 14.9%;
-    --input: 0 0% 14.9%;
-    --ring: 0 0% 83.9%;
-  }
-}
-
-@layer base {
-  * {
-    /* Aplicar uma borda padrão utilizando TailwindCSS */
-    @apply border-[hsl(var(--border))];
+  html, body {
+    overflow-x: hidden;
   }
 
+    html,
   body {
-    @apply bg-[hsl(var(--background))] text-[hsl(var(--foreground))];
+    width: 100%;
+    height: 100%;
+    margin: 0;
   }
-}
+
+  /* Adicione no global.css ou styles.css */
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-none {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;     /* Firefox */
+  }
+
+  .stroke-text {
+    -webkit-text-stroke: 2px white; /* contorno branco */
+    color: transparent;             /* sem preenchimento */
+  }
+
+  @keyframes marquee {
+    0% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  .animate-marquee {
+    animation: marquee 20s linear infinite;
+  }
+
+  @layer base {
+    :root {
+      --background: 0 0% 0%;
+      --foreground: 0 0% 100%;
+      --card: 0 0% 4%;
+      --card-foreground: 0 0% 100%;
+      --popover: 0 0% 4%;
+      --popover-foreground: 0 0% 100%;
+      --primary: 0 0% 100%;
+      --primary-foreground: 0 0% 0%;
+      --secondary: 0 0% 14.9%;
+      --secondary-foreground: 0 0% 100%;
+      --muted: 0 0% 14.9%;
+      --muted-foreground: 0 0% 63.9%;
+      --accent: 0 0% 14.9%;
+      --accent-foreground: 0 0% 100%;
+      --destructive: 0 84.2% 60.2%;
+      --destructive-foreground: 0 0% 100%;
+      --border: 0 0% 14.9%;
+      --input: 0 0% 14.9%;
+      --ring: 0 0% 83.9%;
+    }
+  }
+
+  @layer base {
+    * {
+      /* Aplicar uma borda padrão utilizando TailwindCSS */
+      @apply border-[hsl(var(--border))];
+    }
+
+    body {
+      @apply bg-[hsl(var(--background))] text-[hsl(var(--foreground))];
+    }
+  }
 
 
-.stroke-text {
-  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.3);
-}
+  .stroke-text {
+    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.3);
+  }
 
-.contact-input {
-  width: 100%;
-  border-radius: 0.75rem;
-  padding: 0.9rem 1rem;
-  background: rgba(0, 0, 0, 0.65);
-  color: white;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  outline: none;
-  transition: border 0.2s ease;
-}
+  .contact-input {
+    width: 100%;
+    border-radius: 0.75rem;
+    padding: 0.9rem 1rem;
+    background: rgba(0, 0, 0, 0.65);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    outline: none;
+    transition: border 0.2s ease;
+  }
 
-.contact-input::placeholder {
-  color: rgba(255, 255, 255, 0.45);
-}
+  .contact-input::placeholder {
+    color: rgba(255, 255, 255, 0.45);
+  }
 
-.contact-input:focus {
-  border-color: rgba(255, 255, 255, 0.3);
-}
+  .contact-input:focus {
+    border-color: rgba(255, 255, 255, 0.3);
+  }
 
-.no-scrollbar::-webkit-scrollbar {
-  display: none;
-}
-.no-scrollbar {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-} 
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  } 

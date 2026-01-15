@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import type React from "react";
 import { Archivo } from "next/font/google";
 import { cn } from "./components/ui/lib/utils";
-import LoaderWrapper from "./components/LoaderWrapper";
+
 
 export const metadata: Metadata = {
   title: "reinehr",
@@ -32,8 +32,7 @@ export default function RootLayout({
           "bg-black text-white antialiased"
         )}
       >
-        {/* LOADER GLOBAL */}
-        <LoaderWrapper />
+    
 
         {/* SITE */}
         {children}
