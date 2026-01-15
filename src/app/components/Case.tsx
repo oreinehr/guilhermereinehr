@@ -84,7 +84,15 @@ function CaseCard({
       initial="hidden"
       whileInView="show"
       viewport={{ once: true }}
-      className={`relative w-full h-full overflow-hidden rounded-2xl group ${className}`}
+      className={`
+        relative
+        w-full
+        h-[320px] md:h-full
+        overflow-hidden
+        rounded-2xl
+        group
+        ${className}
+      `}
     >
       {/* MEDIA */}
       {type === "image" ? (
@@ -92,8 +100,7 @@ function CaseCard({
           src={src}
           alt={title}
           fill
-          priority
-          className="object-cover transition-transform duration-700 ease-out md:group-hover:scale-105"
+          className="object-cover transition-transform duration-700 md:group-hover:scale-105"
         />
       ) : (
         <video
@@ -102,7 +109,7 @@ function CaseCard({
           muted
           loop
           playsInline
-          className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out md:group-hover:scale-105"
+          className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 md:group-hover:scale-105"
         />
       )}
 
@@ -130,7 +137,7 @@ function CaseCard({
           initial="hidden"
           whileInView="show"
           viewport={{ once: true }}
-          className="text-3xl md:text-4xl font-black mb-6 tracking-tight"
+          className="text-2xl md:text-4xl font-black mb-5 tracking-tight"
         >
           {title}
         </motion.h3>
@@ -144,7 +151,7 @@ function CaseCard({
           <Link
             href={`/${slug}`}
             className="
-              px-14 py-4 font-semibold border border-white rounded-lg
+              px-12 py-4 font-semibold border border-white rounded-lg
               text-white hover:bg-white hover:text-black transition
             "
           >
@@ -163,12 +170,12 @@ export default function Cases() {
   return (
     <section className="w-full bg-black text-white py-16 px-4 md:px-12">
       {/* TÍTULO */}
-     <motion.h2
+      <motion.h2
         variants={sentence}
         initial="hidden"
         whileInView="show"
         viewport={{ once: true }}
-        className="max-w-3xl text-2xl md:text-4xl font-light whitespace-pre-wrap mb-12"
+        className="max-w-3xl text-2xl md:text-4xl font-light mb-12"
       >
         {splitWords("Crafting immersive digital experiences").map((word, i) => (
           <motion.span
@@ -179,7 +186,7 @@ export default function Cases() {
             {word}
           </motion.span>
         ))}
-
+        <br />
         {splitWords("through UX/UI, Motion design & prototype.").map((word, i) => (
           <motion.span key={i} variants={wordAnimation} className="inline-block">
             {word}
@@ -220,7 +227,7 @@ export default function Cases() {
           title="Brazilian Footwear"
           slug="brazilian-footwear"
           type="image"
-          className="md:col-span-1 md:row-span-1"
+          className="md:col-span-1"
         />
 
         <CaseCard
@@ -228,7 +235,7 @@ export default function Cases() {
           title="Conceito"
           slug="conceito"
           type="video"
-          className="md:col-span-1 md:row-span-1"
+          className="md:col-span-1"
         />
       </div>
 
