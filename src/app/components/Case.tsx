@@ -170,29 +170,34 @@ export default function Cases() {
   return (
     <section className="w-full bg-black text-white py-16 px-4 md:px-12">
       {/* TÍTULO */}
-      <motion.h2
-        variants={sentence}
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true }}
-        className="max-w-3xl text-2xl md:text-4xl font-light mb-12"
-      >
-        {splitWords("Crafting immersive digital experiences").map((word, i) => (
-          <motion.span
-            key={i}
-            variants={wordAnimation}
-            className="inline-block text-[#F2360C] font-medium"
-          >
-            {word}
-          </motion.span>
-        ))}
-        <br />
-        {splitWords("through UX/UI, Motion design & prototype.").map((word, i) => (
-          <motion.span key={i} variants={wordAnimation} className="inline-block">
-            {word}
-          </motion.span>
-        ))}
-      </motion.h2>
+     <motion.h2
+  variants={sentence}
+  initial="hidden"
+  whileInView="show"
+  viewport={{ once: true }}
+  className="max-w-3xl text-2xl md:text-4xl font-light mb-12"
+>
+  {splitWords("Crafting immersive digital experiences").map((word, i) => (
+    <motion.span
+      key={i}
+      variants={wordAnimation}
+      className="inline-block text-[#F2360C] font-medium"
+    >
+      {word}
+      <span className="inline-block">&nbsp;</span>
+    </motion.span>
+  ))}
+
+  <br />
+
+  {splitWords("through UX/UI, Motion design & prototype.").map((word, i) => (
+    <motion.span key={i} variants={wordAnimation} className="inline-block">
+      {word}
+      <span className="inline-block">&nbsp;</span>
+    </motion.span>
+  ))}
+</motion.h2>
+
 
       {/* BENTO GRID */}
       <div
@@ -266,4 +271,3 @@ export default function Cases() {
     </section>
   );
 }
-  

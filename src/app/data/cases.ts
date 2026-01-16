@@ -46,5 +46,15 @@ export const cases: CaseType[] = [
     description: "Motion for Conceito",
     slug: "conceito",
   },
+
+  {
+    id: 5,
+    src: "/luci.png",
+    alt: "Mac",
+    category: "Website",
+    title: "Portfolio Luciano",
+    description: "",
+    slug: "luciano-portfolio",
+  },
 ]
 

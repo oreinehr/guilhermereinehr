@@ -6,8 +6,10 @@ import { cn } from "./components/ui/lib/utils";
 
 
 export const metadata: Metadata = {
-  title: "reinehr",
-  description: "Portfolio Website",
+   metadataBase: new URL("https://reinehr.work"),
+  title: "Reinehr — Creating Beauty",
+  description:
+    "Creating beauty in brazil and worldwide.",
   icons: {
     icon: "/favicon.ico",
   },

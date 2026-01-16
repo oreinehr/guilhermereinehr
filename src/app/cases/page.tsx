@@ -73,7 +73,7 @@ function CaseCard({
           href={`/${slug}`}
           className="px-10 py-3 font-semibold border border-white rounded-lg text-white hover:bg-white hover:text-black transition"
         >
-          Ver projeto
+          See project
         </Link>
       </div>
     </div>
