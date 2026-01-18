@@ -170,7 +170,7 @@ export default function Cases() {
   return (
     <section className="w-full bg-black text-white py-16 px-4 md:px-12">
       {/* TÍTULO */}
-     <motion.h2
+<motion.h2
   variants={sentence}
   initial="hidden"
   whileInView="show"
@@ -181,22 +181,25 @@ export default function Cases() {
     <motion.span
       key={i}
       variants={wordAnimation}
-      className="inline-block text-[#F2360C] font-medium"
+      className="inline-block text-[#F2360C] font-medium mr-2"
     >
       {word}
-      <span className="inline-block">&nbsp;</span>
     </motion.span>
   ))}
 
   <br />
 
   {splitWords("through UX/UI, Motion design & prototype.").map((word, i) => (
-    <motion.span key={i} variants={wordAnimation} className="inline-block">
+    <motion.span
+      key={i}
+      variants={wordAnimation}
+      className="inline-block mr-2"
+    >
       {word}
-      <span className="inline-block">&nbsp;</span>
     </motion.span>
   ))}
 </motion.h2>
+
 
 
       {/* BENTO GRID */}
