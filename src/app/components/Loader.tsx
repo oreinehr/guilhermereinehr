@@ -11,13 +11,6 @@ export default function Loader({ visible }: { visible: boolean }) {
     setSrc(isMobile ? "/loader-mobile.mp4" : "/loader-desktop.mp4");
   }, []);
 
-  useEffect(() => {
-    if (!src) return;
-    requestAnimationFrame(() => {
-      videoRef.current?.play().catch(() => {});
-    });
-  }, [src]);
-
   if (!src) return null;
 
   return (
@@ -35,13 +28,13 @@ export default function Loader({ visible }: { visible: boolean }) {
       <video
         ref={videoRef}
         src={src}
-        muted
         autoPlay
+        muted
         playsInline
-        loop
         controls={false}
         preload="auto"
         webkit-playsinline="true"
+        disablePictureInPicture
         style={{
           width: "100%",
           height: "100%",

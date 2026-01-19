@@ -23,10 +23,11 @@ export default function LoaderWrapper() {
 
       setTimeout(() => setVisible(false), 2500);
 
-      setTimeout(() => {
-        setMounted(false);
-        setLoaderDone(true); // 👈 AVISA QUE TERMINOU
-      }, 3200);
+     setTimeout(() => setVisible(false), 2200);
+setTimeout(() => {
+  setMounted(false);
+  setLoaderDone(true);
+}, 3000);
     } else {
       // se já visitou, loader já está "done"
       setLoaderDone(true);
