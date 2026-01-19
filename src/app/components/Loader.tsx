@@ -8,16 +8,14 @@ export default function Loader({ visible }: { visible: boolean }) {
 
   useEffect(() => {
     const isMobile = window.matchMedia("(max-width: 768px)").matches;
-
     setSrc(isMobile ? "/loader-mobile.mp4" : "/loader-desktop.mp4");
   }, []);
 
   useEffect(() => {
-    if (src) {
-      requestAnimationFrame(() => {
-        videoRef.current?.play().catch(() => {});
-      });
-    }
+    if (!src) return;
+    requestAnimationFrame(() => {
+      videoRef.current?.play().catch(() => {});
+    });
   }, [src]);
 
   if (!src) return null;
@@ -38,9 +36,12 @@ export default function Loader({ visible }: { visible: boolean }) {
         ref={videoRef}
         src={src}
         muted
-        playsInline
         autoPlay
+        playsInline
+        loop
+        controls={false}
         preload="auto"
+        webkit-playsinline="true"
         style={{
           width: "100%",
           height: "100%",
