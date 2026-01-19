@@ -5,6 +5,8 @@ import { motion } from "framer-motion";
 import { circOut } from "framer-motion";
 import Header from "./Header";
 import animationData from "../data/scene.json";
+import { useLoader } from "./LoaderContext";
+
 
 /* --- ANIMAÇÕES --- */
 const fadeUp = {
@@ -27,21 +29,24 @@ const fadeUp = {
 };
 
 export default function Hero() {
+    const { loaderDone } = useLoader();
   
 
   return (
     <section className="relative h-screen w-screen overflow-hidden text-white">
 
       {/* BACKGROUND LOTTIE */}
-      <div className="absolute inset-0 -z-10 pointer-events-none overflow-hidden">
-        <Lottie
-          animationData={animationData}
-          loop
-          autoplay
-          rendererSettings={{ preserveAspectRatio: "xMidYMid slice" }}
-          className="w-full h-full"
-        />
-      </div>
+    {loaderDone && (
+  <div className="absolute inset-0 -z-10 pointer-events-none overflow-hidden">
+    <Lottie
+      animationData={animationData}
+      loop
+      autoplay
+      rendererSettings={{ preserveAspectRatio: "xMidYMid slice" }}
+      className="w-full h-full"
+    />
+  </div>
+)}
 
       <Header />
 

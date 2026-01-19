@@ -4,12 +4,13 @@ import type React from "react";
 import { Archivo } from "next/font/google";
 import { cn } from "./components/ui/lib/utils";
 
+import { LoaderProvider } from "./components/LoaderContext";
+import LoaderWrapper from "./components/LoaderWrapper";
 
 export const metadata: Metadata = {
-   metadataBase: new URL("https://reinehr.work"),
+  metadataBase: new URL("https://reinehr.work"),
   title: "Reinehr — Creating Beauty",
-  description:
-    "Creating beauty in brazil and worldwide.",
+  description: "Creating beauty in brazil and worldwide.",
   icons: {
     icon: "/favicon.ico",
   },
@@ -34,10 +35,10 @@ export default function RootLayout({
           "bg-black text-white antialiased"
         )}
       >
-    
-
-        {/* SITE */}
-        {children}
+        <LoaderProvider>
+          <LoaderWrapper />
+          {children}
+        </LoaderProvider>
       </body>
     </html>
   );

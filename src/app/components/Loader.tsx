@@ -1,18 +1,26 @@
 "use client";
 
-import Lottie from "lottie-react";
-import loaderAnim from "../data/load.json";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export default function Loader({ visible }: { visible: boolean }) {
-  const [showAnim, setShowAnim] = useState(false);
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+  const [src, setSrc] = useState<string | null>(null);
 
   useEffect(() => {
-    // espera 1 frame com layout pronto
-    requestAnimationFrame(() => {
-      setShowAnim(true);
-    });
+    const isMobile = window.matchMedia("(max-width: 768px)").matches;
+
+    setSrc(isMobile ? "/loader-mobile.mp4" : "/loader-desktop.mp4");
   }, []);
+
+  useEffect(() => {
+    if (src) {
+      requestAnimationFrame(() => {
+        videoRef.current?.play().catch(() => {});
+      });
+    }
+  }, [src]);
+
+  if (!src) return null;
 
   return (
     <div
@@ -23,29 +31,22 @@ export default function Loader({ visible }: { visible: boolean }) {
         zIndex: 9999,
         opacity: visible ? 1 : 0,
         transition: "opacity 0.7s ease-out",
+        pointerEvents: "none",
       }}
     >
-      <div
+      <video
+        ref={videoRef}
+        src={src}
+        muted
+        playsInline
+        autoPlay
+        preload="auto"
         style={{
-          position: "absolute",
-          top: "50%",
-          left: "50%",
-          transform: "translate(-50%, -50%)",
-          width: 220,
-          height: 220,
+          width: "100%",
+          height: "100%",
+          objectFit: "cover",
         }}
-      >
-        {showAnim && (
-          <Lottie
-            animationData={loaderAnim}
-            loop
-            autoplay
-            renderer="svg"
-            rendererSettings={{ preserveAspectRatio: "xMidYMid meet" }}
-            style={{ width: "100%", height: "100%" }}
-          />
-        )}
-      </div>
+      />
     </div>
   );
 }
