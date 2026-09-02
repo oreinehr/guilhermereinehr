@@ -133,7 +133,7 @@ export default function Header() {
                 aria-label={t.nav.close}
                 className="text-3xl leading-none"
               >
-                ✕
+                ✕︎
               </button>
             </div>
 

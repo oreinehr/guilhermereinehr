@@ -302,7 +302,7 @@ export default function CaseStudy({ entry }: { entry: CaseEntry }) {
           <span className="flex items-center gap-6 text-[clamp(2rem,6vw,5rem)] font-black leading-none tracking-tighter transition-colors duration-500 group-hover:text-[#F2360C]">
             {next.copy[lang].title}
             <span className="shrink-0 transition-transform duration-500 group-hover:translate-x-3">
-              →
+              →︎
             </span>
           </span>
         </Link>

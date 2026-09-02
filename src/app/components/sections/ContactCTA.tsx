@@ -106,8 +106,8 @@ export default function ContactCTA() {
               <span key={line}>{line}</span>
             )
           )}
-          className="max-w-5xl text-[clamp(2.25rem,7vw,6.5rem)] font-black leading-[0.9] tracking-tighter"
-          lineClassName="pb-[0.06em]"
+          className="-mb-[0.18em] max-w-5xl text-[clamp(2.25rem,7vw,6.5rem)] font-black leading-[0.9] tracking-tighter"
+          lineClassName="pb-[0.18em]"
           stagger={0.1}
         />
 
@@ -126,9 +126,20 @@ export default function ContactCTA() {
                 <span className="break-all text-[clamp(1.1rem,4.2vw,3.25rem)] font-black tracking-tighter transition-colors duration-500 group-hover:text-black">
                   {EMAIL}
                 </span>
-                <span className="shrink-0 text-2xl transition-all duration-500 group-hover:translate-x-2 group-hover:text-black md:text-4xl">
-                  ↗
-                </span>
+                {/* seta desenhada — ↗ renderiza como emoji no iOS */}
+                <svg
+                  aria-hidden
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2.2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="h-6 w-6 shrink-0 transition-all duration-500 group-hover:translate-x-2 group-hover:text-black md:h-9 md:w-9"
+                >
+                  <line x1="6" y1="18" x2="18" y2="6" />
+                  <polyline points="9 6 18 6 18 15" />
+                </svg>
               </span>
             </a>
           </Magnetic>
@@ -148,7 +159,7 @@ export default function ContactCTA() {
                   {t.cta.briefing}
                 </span>
                 <span className="relative transition-colors duration-500 group-hover:text-black">
-                  →
+                  →︎
                 </span>
               </Link>
             </Magnetic>

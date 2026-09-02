@@ -141,7 +141,8 @@ export default function ContactPage() {
                 </span>
               </>,
             ]}
-            className="max-w-5xl text-[clamp(2.25rem,7.5vw,7rem)] font-black leading-[0.9] tracking-tighter"
+            className="-mb-[0.18em] max-w-5xl text-[clamp(2.25rem,7.5vw,7rem)] font-black leading-[0.9] tracking-tighter"
+            lineClassName="pb-[0.18em]"
             stagger={0.1}
           />
 
@@ -235,7 +236,7 @@ export default function ContactPage() {
                       {loading ? t.contact.submitting : t.contact.submit}
                     </span>
                     <span className="relative transition-all duration-500 group-hover:translate-x-1 group-hover:text-black">
-                      →
+                      →︎
                     </span>
                   </button>
                 </Magnetic>

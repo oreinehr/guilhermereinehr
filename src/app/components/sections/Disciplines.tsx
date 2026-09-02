@@ -91,7 +91,7 @@ export default function Disciplines() {
                         transition={{ duration: 0.4, ease: EASE }}
                         className="hidden shrink-0 text-[#F2360C] md:block"
                       >
-                        →
+                        →︎
                       </motion.span>
                     </button>
 

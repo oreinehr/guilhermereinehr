@@ -99,7 +99,23 @@ export default function Clients() {
               <span className="text-white/25 transition-colors duration-500 hover:text-white">
                 {client}
               </span>
-              <span className="mx-6 text-[#F2360C] md:mx-10">✳</span>
+              {/* asterisco desenhado — o caractere ✳ vira emoji
+                  colorido no iOS, fora da tipografia da página */}
+              <svg
+                aria-hidden
+                viewBox="0 0 24 24"
+                className="mx-6 h-[0.5em] w-[0.5em] shrink-0 md:mx-10"
+              >
+                <g
+                  stroke="#F2360C"
+                  strokeWidth="2.6"
+                  strokeLinecap="round"
+                >
+                  <line x1="12" y1="3" x2="12" y2="21" />
+                  <line x1="4.2" y1="7.5" x2="19.8" y2="16.5" />
+                  <line x1="4.2" y1="16.5" x2="19.8" y2="7.5" />
+                </g>
+              </svg>
             </span>
           ))}
         </VelocityRow>

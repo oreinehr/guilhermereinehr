@@ -84,8 +84,8 @@ export default function Manifesto() {
               </span>
             </>,
           ]}
-          className="text-[clamp(2.75rem,10vw,9rem)] font-black leading-[0.98] tracking-tighter"
-          lineClassName="pb-[0.1em]"
+          className="-mb-[0.18em] text-[clamp(2.75rem,10vw,9rem)] font-black leading-[0.98] tracking-tighter"
+          lineClassName="pb-[0.18em]"
           stagger={0.11}
         />
 
