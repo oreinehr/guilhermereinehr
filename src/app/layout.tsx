@@ -5,12 +5,16 @@ import { Archivo } from "next/font/google";
 import { cn } from "./components/ui/lib/utils";
 
 import { LoaderProvider } from "./components/LoaderContext";
+import { LanguageProvider } from "./i18n/LanguageContext";
 import LoaderWrapper from "./components/LoaderWrapper";
+import Cursor from "./components/motion/Cursor";
+import ScrollProgress from "./components/motion/ScrollProgress";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://reinehr.work"),
-  title: "Reinehr — Creating Beauty",
-  description: "Creating beauty in brazil and worldwide.",
+  title: "Reinehr — Criando beleza",
+  description:
+    "Portfólio de Guilherme Reinehr — UX/UI Design, motion e direção de arte no Brasil e pelo mundo.",
   icons: {
     icon: "/favicon.ico",
   },
@@ -28,17 +32,23 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="scroll-smooth">
+    <html lang="pt-BR" className="scroll-smooth">
       <body
         className={cn(
           archivo.className,
           "bg-black text-white antialiased"
         )}
       >
-        <LoaderProvider>
-          <LoaderWrapper />
-          {children}
-        </LoaderProvider>
+        <LanguageProvider>
+          <LoaderProvider>
+            <LoaderWrapper />
+            {/* cursor e barra de progresso valem para o site inteiro;
+                ambos só montam em ponteiro fino */}
+            <Cursor />
+            <ScrollProgress />
+            {children}
+          </LoaderProvider>
+        </LanguageProvider>
       </body>
     </html>
   );

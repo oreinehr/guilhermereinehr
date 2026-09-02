@@ -6,6 +6,7 @@ import { circOut } from "framer-motion";
 import Header from "./Header";
 import animationData from "../data/scene.json";
 import { useLoader } from "./LoaderContext";
+import { useLang } from "../i18n/LanguageContext";
 
 
 /* --- ANIMAÇÕES --- */
@@ -30,6 +31,7 @@ const fadeUp = {
 
 export default function Hero() {
     const { loaderDone } = useLoader();
+    const { t } = useLang();
   
 
   return (
@@ -90,7 +92,7 @@ export default function Hero() {
         animate="show"
         className="text-xl leading-snug text-left pr-12"
       >
-        Creating beauty in Brazil <br /> and around the world
+        {t.hero.left[0]} <br /> {t.hero.left[1]}
       </motion.p>
 
       {/* TEXTO DIREITO */}
@@ -100,7 +102,7 @@ export default function Hero() {
         animate="show"
         className="text-xl leading-snug text-right pl-12"
       >
-        UX/UI Design, Motion, <br /> Product Design & Prototype.
+        {t.hero.right[0]} <br /> {t.hero.right[1]}
       </motion.p>
 
     </div>

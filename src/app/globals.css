@@ -2,15 +2,22 @@
   @tailwind components;
   @tailwind utilities;
 
-  html, body {
-    overflow-x: hidden;
+  /* Só o <body> corta o overflow horizontal. `overflow-x: hidden` no <html>
+     transforma o elemento raiz em container de scroll e quebra o
+     `position: sticky` da seção de Processo. */
+  html {
+    width: 100%;
+    min-height: 100%;
+    margin: 0;
   }
 
-    html,
+  /* height:100% no <html>/<body> travava o scrollHeight do documento em uma
+     viewport, zerando window.scrollY e todo o motion ligado ao scroll. */
   body {
     width: 100%;
-    height: 100%;
+    min-height: 100%;
     margin: 0;
+    overflow-x: hidden;
   }
 
   /* Adicione no global.css ou styles.css */
@@ -106,3 +113,47 @@
     -ms-overflow-style: none;
     scrollbar-width: none;
   } 
+  /* =========================================================
+     CURSOR CUSTOMIZADO
+     Esconde o cursor nativo só quando há ponteiro fino e o
+     usuário não pediu movimento reduzido — touch e teclado
+     seguem com o comportamento padrão do sistema.
+  ========================================================= */
+  @media (pointer: fine) and (prefers-reduced-motion: no-preference) {
+    .cursor-none-desktop,
+    .cursor-none-desktop * {
+      cursor: none;
+    }
+  }
+
+  /* Foco visível — o cursor customizado não substitui acessibilidade */
+  :focus-visible {
+    outline: 2px solid #F2360C;
+    outline-offset: 3px;
+  }
+
+  /* Seleção de texto na identidade do site */
+  ::selection {
+    background: #F2360C;
+    color: #000;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .animate-marquee {
+      animation: none;
+    }
+    html {
+      scroll-behavior: auto;
+    }
+    /* Transições e animações declaradas em CSS (hover de capa,
+       sublinhado dos filtros) também precisam parar — o
+       framer-motion já respeita a preferência por conta própria. */
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }

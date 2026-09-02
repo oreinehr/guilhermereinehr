@@ -9,6 +9,9 @@ import {
   useScroll,
 } from "framer-motion";
 import { circOut } from "framer-motion";
+import { useLang } from "../i18n/LanguageContext";
+import { caseStudies } from "../i18n/cases";
+import LanguageSwitcher from "./LanguageSwitcher";
 
 /* =========================
    ANIMAÇÕES
@@ -27,6 +30,7 @@ const fadeHeader = {
 };
 
 export default function Header() {
+  const { t } = useLang();
   const [menuOpen, setMenuOpen] = useState(false);
   const controls = useAnimation();
 
@@ -76,8 +80,9 @@ export default function Header() {
           </Link>
 
           <nav className="flex items-center gap-12 text-xl">
-            <Link href="/cases">Selected work (04)</Link>
-            <Link href="/contact">Contact</Link>
+            <Link href="/cases">{t.nav.workCount(caseStudies.length)}</Link>
+            <Link href="/contact">{t.nav.contact}</Link>
+            <LanguageSwitcher className="text-xl" />
             <div className="flex gap-4">
               <a href="https://www.instagram.com/reinehrrl/">(IG)</a>
               <a href="https://www.linkedin.com/in/guilherme-reinehr-a24117340/">(LI)</a>
@@ -94,7 +99,11 @@ export default function Header() {
             </h1>
           </Link>
 
-          <button onClick={() => setMenuOpen(true)} className="flex flex-col gap-1">
+          <button
+            onClick={() => setMenuOpen(true)}
+            aria-label={t.nav.menu}
+            className="flex flex-col gap-1"
+          >
             <span className="w-6 h-[2px] bg-white" />
             <span className="w-6 h-[2px] bg-white" />
             <span className="w-6 h-[2px] bg-white" />
@@ -121,6 +130,7 @@ export default function Header() {
 
               <button
                 onClick={() => setMenuOpen(false)}
+                aria-label={t.nav.close}
                 className="text-3xl leading-none"
               >
                 ✕
@@ -129,11 +139,13 @@ export default function Header() {
 
             <div className="flex flex-col gap-4 px-6 mt-12 text-3xl font-black">
               <Link href="/cases" onClick={() => setMenuOpen(false)}>
-                Selected work (03)
+                {t.nav.workCount(caseStudies.length)}
               </Link>
               <Link href="/contact" onClick={() => setMenuOpen(false)}>
-                Contact
+                {t.nav.contact}
               </Link>
+
+              <LanguageSwitcher className="mt-6 text-3xl font-black" />
             </div>
           </motion.div>
         )}

@@ -4,6 +4,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import type { Variants } from "framer-motion";
+import { useLang } from "../i18n/LanguageContext";
+import { getCase } from "../i18n/cases";
 
 /* =========================
    HELPERS
@@ -78,6 +80,8 @@ function CaseCard({
   type: "image" | "video";
   className?: string;
 }) {
+  const { t } = useLang();
+
   return (
     <motion.div
       variants={fadeMedia}
@@ -155,7 +159,7 @@ function CaseCard({
               text-white hover:bg-white hover:text-black transition
             "
           >
-            See Project
+            {t.home.seeProject}
           </Link>
         </motion.div>
       </div>
@@ -166,7 +170,17 @@ function CaseCard({
 /* =========================
    COMPONENTE PRINCIPAL
 ========================= */
+/* layout do bento — a copy de cada card vem do dicionário */
+const GRID = [
+  { slug: "planeta", src: "/planetaatl.png", type: "image" as const, className: "md:col-span-2 md:row-span-2" },
+  { slug: "marina", src: "/marinapark.png", type: "image" as const, className: "md:col-span-1 md:row-span-2" },
+  { slug: "brazilian-footwear", src: "/bfmockup.png", type: "image" as const, className: "md:col-span-1" },
+  { slug: "conceito", src: "/conceito.mp4", type: "video" as const, className: "md:col-span-1" },
+];
+
 export default function Cases() {
+  const { lang, t } = useLang();
+
   return (
     <section className="w-full bg-black text-white py-16 px-4 md:px-12">
       {/* TÍTULO */}
@@ -175,9 +189,10 @@ export default function Cases() {
   initial="hidden"
   whileInView="show"
   viewport={{ once: true }}
+  key={lang}
   className="max-w-3xl text-2xl md:text-4xl font-light mb-12"
 >
-  {splitWords("Crafting immersive digital experiences").map((word, i) => (
+  {splitWords(t.home.heading.join(" ")).map((word, i) => (
     <motion.span
       key={i}
       variants={wordAnimation}
@@ -189,7 +204,7 @@ export default function Cases() {
 
   <br />
 
-  {splitWords("through UX/UI, Motion design & prototype.").map((word, i) => (
+  {splitWords(t.home.subheading).map((word, i) => (
     <motion.span
       key={i}
       variants={wordAnimation}
@@ -214,37 +229,17 @@ export default function Cases() {
           md:min-h-[720px]
         "
       >
-        <CaseCard
-          src="/planetaatl.png"
-          title="Planeta Atlântida"
-          slug="planeta"
-          type="image"
-          className="md:col-span-2 md:row-span-2"
-        />
+        {GRID.map((card) => (
+          <CaseCard
+            key={card.slug}
+            src={card.src}
+            title={getCase(card.slug)?.copy[lang].title ?? card.slug}
+            slug={card.slug}
+            type={card.type}
+            className={card.className}
+          />
+        ))}
 
-        <CaseCard
-          src="/marinapark.png"
-          title="Marina Park"
-          slug="marina"
-          type="image"
-          className="md:col-span-1 md:row-span-2"
-        />
-
-        <CaseCard
-          src="/bfmockup.png"
-          title="Brazilian Footwear"
-          slug="brazilian-footwear"
-          type="image"
-          className="md:col-span-1"
-        />
-
-        <CaseCard
-          src="/conceito.mp4"
-          title="Conceito"
-          slug="conceito"
-          type="video"
-          className="md:col-span-1"
-        />
       </div>
 
       {/* CTA */}
@@ -268,7 +263,7 @@ export default function Cases() {
             transition
           "
         >
-          See all cases
+          {t.home.seeAll}
         </Link>
       </motion.div>
     </section>
