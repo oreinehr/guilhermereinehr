@@ -13,6 +13,7 @@ import { useMemo, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
+import AutoVideo from "../components/AutoVideo";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { EASE, RevealLines } from "../components/motion/primitives";
@@ -52,13 +53,8 @@ function CaseRow({ entry, index }: { entry: CaseEntry; index: number }) {
           {/* CAPA */}
           <div className="relative aspect-[16/10] w-full overflow-hidden rounded-lg md:w-[52%]">
             {entry.cover.type === "video" ? (
-              <video
+              <AutoVideo
                 src={entry.cover.src}
-                autoPlay
-                loop
-                muted
-                playsInline
-                preload="metadata"
                 className="absolute inset-0 h-full w-full object-cover transition-transform duration-[900ms] ease-[cubic-bezier(0.16,1,0.3,1)] md:group-hover:scale-[1.04]"
               />
             ) : (

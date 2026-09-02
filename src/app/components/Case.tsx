@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import type { Variants } from "framer-motion";
+import AutoVideo from "./AutoVideo";
 import { useLang } from "../i18n/LanguageContext";
 import { getCase } from "../i18n/cases";
 
@@ -107,12 +108,8 @@ function CaseCard({
           className="object-cover transition-transform duration-700 md:group-hover:scale-105"
         />
       ) : (
-        <video
+        <AutoVideo
           src={src}
-          autoPlay
-          muted
-          loop
-          playsInline
           className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 md:group-hover:scale-105"
         />
       )}

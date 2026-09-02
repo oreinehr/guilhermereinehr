@@ -14,6 +14,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import AutoVideo from "./AutoVideo";
 import Header from "./Header";
 import Footer from "./Footer";
 import { EASE } from "./motion/primitives";
@@ -30,21 +31,12 @@ function Media({
   alt: string;
   priority?: boolean;
 }) {
-  const { t } = useLang();
-
   if (media.type === "video") {
     return (
-      <video
+      <AutoVideo
         src={media.src}
-        autoPlay
-        loop
-        muted
-        playsInline
-        preload="metadata"
         className="h-full w-full object-cover"
-      >
-        {t.caseStudy.videoFallback}
-      </video>
+      />
     );
   }
 
@@ -89,12 +81,8 @@ export default function CaseStudy({ entry }: { entry: CaseEntry }) {
           className="absolute inset-0"
         >
           {entry.hero.type === "video" ? (
-            <video
+            <AutoVideo
               src={entry.hero.src}
-              autoPlay
-              loop
-              muted
-              playsInline
               className="absolute inset-0 h-full w-full object-cover"
             />
           ) : (

@@ -183,7 +183,6 @@ export const pt = {
     year: "Ano",
     client: "Cliente",
     galleryAlt: (title: string, n: number) => `${title} — imagem ${n}`,
-    videoFallback: "Seu navegador não suporta vídeo.",
     next: "Próximo case",
   },
 
@@ -387,7 +386,6 @@ export const en: Dict = {
     year: "Year",
     client: "Client",
     galleryAlt: (title: string, n: number) => `${title} — image ${n}`,
-    videoFallback: "Your browser does not support the video tag.",
     next: "Next case",
   },
 

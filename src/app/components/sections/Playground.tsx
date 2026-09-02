@@ -15,8 +15,9 @@ import {
   useReducedMotion,
   useSpring,
 } from "framer-motion";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { EASE, SectionLabel, Stagger, staggerItem } from "../motion/primitives";
+import AutoVideo from "../AutoVideo";
 import { useLang } from "../../i18n/LanguageContext";
 
 /* mídia dos experimentos — os títulos/tags vêm do dicionário,
@@ -34,6 +35,26 @@ export default function Playground() {
     ...MEDIA[i],
   }));
   const [hovered, setHovered] = useState<number | null>(null);
+  const [slide, setSlide] = useState(0);
+  const trackRef = useRef<HTMLDivElement>(null);
+
+  /* índice do card mais próximo do centro — alimenta os pontos */
+  function onScroll() {
+    const el = trackRef.current;
+    if (!el) return;
+    const center = el.scrollLeft + el.clientWidth / 2;
+    let closest = 0;
+    let min = Infinity;
+    Array.from(el.children).forEach((child, i) => {
+      const c = child as HTMLElement;
+      const d = Math.abs(c.offsetLeft + c.offsetWidth / 2 - center);
+      if (d < min) {
+        min = d;
+        closest = i;
+      }
+    });
+    setSlide(closest);
+  }
   const reduce = useReducedMotion();
 
   const mx = useMotionValue(0);
@@ -94,13 +115,8 @@ export default function Playground() {
                   className="relative h-[260px] w-[380px] -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-2xl lg:h-[320px] lg:w-[460px]"
                 >
                   {EXPERIMENTS[hovered].type === "video" ? (
-                    <video
+                    <AutoVideo
                       src={EXPERIMENTS[hovered].src}
-                      autoPlay
-                      loop
-                      muted
-                      playsInline
-                      preload="metadata"
                       className="absolute inset-0 h-full w-full object-cover"
                     />
                   ) : (
@@ -157,7 +173,11 @@ export default function Playground() {
 
         {/* ============ MOBILE: carrossel snap ============ */}
         <div className="-mx-6 md:hidden">
-          <div className="no-scrollbar flex snap-x snap-mandatory gap-4 overflow-x-auto px-6 pb-2">
+          <div
+            ref={trackRef}
+            onScroll={onScroll}
+            className="no-scrollbar flex snap-x snap-mandatory gap-4 overflow-x-auto px-6 pb-2"
+          >
             {EXPERIMENTS.map((item) => (
               <motion.div
                 key={item.title}
@@ -165,17 +185,12 @@ export default function Playground() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.3 }}
                 transition={{ duration: 0.7, ease: EASE }}
-                className="w-[76vw] shrink-0 snap-center"
+                className="w-[76vw] shrink-0 snap-center last:mr-6"
               >
                 <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl">
                   {item.type === "video" ? (
-                    <video
+                    <AutoVideo
                       src={item.src}
-                      autoPlay
-                      loop
-                      muted
-                      playsInline
-                      preload="metadata"
                       className="absolute inset-0 h-full w-full object-cover"
                     />
                   ) : (
@@ -198,6 +213,22 @@ export default function Playground() {
                 </div>
               </motion.div>
             ))}
+          </div>
+
+          {/* PROGRESSO — mostra que a faixa desliza e onde se está */}
+          <div className="mt-5 flex items-center gap-2 px-6">
+            {EXPERIMENTS.map((item, i) => (
+              <span
+                key={item.title}
+                aria-hidden
+                className={`h-[2px] rounded-full transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+                  slide === i ? "w-7 bg-[#F2360C]" : "w-3 bg-white/20"
+                }`}
+              />
+            ))}
+            <span className="ml-auto text-[0.6rem] uppercase tracking-[0.18em] text-white/35">
+              {slide + 1}/{EXPERIMENTS.length}
+            </span>
           </div>
         </div>
       </div>
