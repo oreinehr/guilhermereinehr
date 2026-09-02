@@ -17,11 +17,6 @@ export const pt = {
     langLabel: "Idioma",
   },
 
-  hero: {
-    left: ["Criando beleza no Brasil", "e pelo mundo"],
-    right: ["UX/UI Design, Motion,", "Product Design & Protótipo."],
-  },
-
   home: {
     heading: ["Criando experiências", "digitais imersivas"],
     subheading: "com UX/UI, motion design e protótipo.",
@@ -226,11 +221,6 @@ export const en: Dict = {
     langLabel: "Language",
   },
 
-  hero: {
-    left: ["Creating beauty in Brazil", "and around the world"],
-    right: ["UX/UI Design, Motion,", "Product Design & Prototype."],
-  },
-
   home: {
     heading: ["Crafting immersive", "digital experiences"],
     subheading: "through UX/UI, motion design & prototype.",
@@ -341,7 +331,7 @@ export const en: Dict = {
 
   cta: {
     label: "Contact",
-    headline: ["Got a project", "that deserves", "to be done right?"],
+    headline: ["Got a project", "that deserves to", "be done right?"],
     briefing: "Quick briefing",
     location: "Porto Alegre, Brazil",
     cursorEmail: "E-mail",

@@ -91,19 +91,23 @@ export default function ContactCTA() {
           {t.cta.label}
         </SectionLabel>
 
+        {/* Uma linha por entrada do dicionário — a última em itálico.
+            Colar duas entradas na mesma linha fazia o inglês, mais
+            longo que o português, quebrar sozinho e vazar da tela. */}
         <RevealLines
           as="h2"
           key={t.cta.headline.join("|")}
-          lines={[
-            <>{t.cta.headline[0]}</>,
-            <>
-              {t.cta.headline[1]}{" "}
-              <span className="italic text-[#F2360C]">
-                {t.cta.headline[2]}
+          lines={t.cta.headline.map((line, i) =>
+            i === t.cta.headline.length - 1 ? (
+              <span key={line} className="italic text-[#F2360C]">
+                {line}
               </span>
-            </>,
-          ]}
-          className="max-w-5xl text-[clamp(2.25rem,7.5vw,7rem)] font-black leading-[0.9] tracking-tighter"
+            ) : (
+              <span key={line}>{line}</span>
+            )
+          )}
+          className="max-w-5xl text-[clamp(2.25rem,7vw,6.5rem)] font-black leading-[0.9] tracking-tighter"
+          lineClassName="pb-[0.06em]"
           stagger={0.1}
         />
 

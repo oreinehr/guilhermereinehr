@@ -6,7 +6,6 @@ import { circOut } from "framer-motion";
 import Header from "./Header";
 import animationData from "../data/scene.json";
 import { useLoader } from "./LoaderContext";
-import { useLang } from "../i18n/LanguageContext";
 
 
 /* --- ANIMAÇÕES --- */
@@ -31,7 +30,6 @@ const fadeUp = {
 
 export default function Hero() {
     const { loaderDone } = useLoader();
-    const { t } = useLang();
   
 
   return (
@@ -82,30 +80,6 @@ export default function Hero() {
       reinehr
     </motion.h2>
 
-    {/* TEXTOS ABAIXO DO TÍTULO */}
-    <div className="mt-12 grid grid-cols-2 w-full max-w-4xl">
-
-      {/* TEXTO ESQUERDO */}
-      <motion.p
-        variants={fadeUp}
-        initial="hidden"
-        animate="show"
-        className="text-xl leading-snug text-left pr-12"
-      >
-        {t.hero.left[0]} <br /> {t.hero.left[1]}
-      </motion.p>
-
-      {/* TEXTO DIREITO */}
-      <motion.p
-        variants={fadeUp}
-        initial="hidden"
-        animate="show"
-        className="text-xl leading-snug text-right pl-12"
-      >
-        {t.hero.right[0]} <br /> {t.hero.right[1]}
-      </motion.p>
-
-    </div>
   </div>
 </div>
 
