@@ -37,7 +37,7 @@ export default function Hero() {
 
       {/* BACKGROUND LOTTIE */}
     {loaderDone && (
-  <div className="absolute inset-0 -z-10 pointer-events-none overflow-hidden">
+  <div className="hero-lottie absolute inset-0 -z-10 pointer-events-none overflow-hidden">
     <Lottie
       animationData={animationData}
       loop
@@ -91,7 +91,9 @@ export default function Hero() {
           -webkit-text-stroke: 1px white;
         }
 
-        svg {
+        /* só o SVG da animação de fundo — esta regra era global e
+           esticava qualquer outro SVG da página para a viewport */
+        .hero-lottie svg {
           width: 100vw !important;
           height: 100vh !important;
         }

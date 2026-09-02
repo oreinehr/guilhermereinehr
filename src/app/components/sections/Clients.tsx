@@ -104,11 +104,11 @@ export default function Clients() {
               <svg
                 aria-hidden
                 viewBox="0 0 24 24"
-                className="mx-6 h-[0.28em] w-[0.28em] shrink-0 md:mx-10"
+                className="mx-6 h-[0.42em] w-[0.42em] shrink-0 md:mx-10"
               >
                 <g
                   stroke="#F2360C"
-                  strokeWidth="3.4"
+                  strokeWidth="3"
                   strokeLinecap="round"
                 >
                   <line x1="12" y1="3" x2="12" y2="21" />
