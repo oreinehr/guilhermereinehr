@@ -32,8 +32,11 @@ export default function Hero() {
     const { loaderDone } = useLoader();
   
 
+  /* 16:9 a partir do tablet; no celular uma proporção mais alta —
+     16:9 em 390px daria ~220px de altura, com o header cobrindo
+     boa parte da animação. */
   return (
-    <section className="relative h-screen w-screen overflow-hidden text-white">
+    <section className="relative aspect-[4/5] w-full overflow-hidden text-white sm:aspect-video">
 
       {/* BACKGROUND LOTTIE */}
     {loaderDone && (
@@ -92,10 +95,11 @@ export default function Hero() {
         }
 
         /* só o SVG da animação de fundo — esta regra era global e
-           esticava qualquer outro SVG da página para a viewport */
+           esticava qualquer outro SVG da página para a viewport.
+           Preenche a caixa 16:9 da seção, não a altura da tela. */
         .hero-lottie svg {
-          width: 100vw !important;
-          height: 100vh !important;
+          width: 100% !important;
+          height: 100% !important;
         }
       `}</style>
     </section>
