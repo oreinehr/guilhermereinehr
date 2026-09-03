@@ -56,42 +56,42 @@ export default function Hero() {
       {/* HERO CONTENT */}
       <div className="relative h-full flex items-center justify-center px-6 md:px-0 overflow-x-hidden">
 
-        {/* MOBILE — sem título */}
-        <div className="md:hidden flex flex-col justify-end h-full pb-24">
-          {/* espaço livre proposital — hero clean */}
+        {/* TÍTULO — um só bloco para mobile e desktop */}
+        <div className="flex w-full h-full items-center justify-center px-6 md:px-12">
+          <div className="flex w-full max-w-screen-xl flex-col items-center">
+            <motion.h2
+              variants={fadeUp}
+              initial="hidden"
+              animate="show"
+              className="
+                text-[clamp(3.5rem,22vw,18rem)]
+                font-black
+                tracking-tighter
+                text-transparent
+                stroke-text
+                leading-none
+                text-center
+              "
+            >
+              reinehr
+            </motion.h2>
+          </div>
         </div>
-
-        {/* DESKTOP */}
-   <div className="hidden md:flex w-full h-full items-center justify-center px-12">
-  <div className="flex flex-col items-center w-full max-w-screen-xl">
-
-    {/* TÍTULO CENTRAL */}
-    <motion.h2
-      variants={fadeUp}
-      initial="hidden"
-      animate="show"
-      className="
-        text-[clamp(6rem,22vw,18rem)]
-        font-black
-        tracking-tighter
-        text-transparent
-        stroke-text
-        leading-none
-        text-center
-      "
-    >
-      reinehr
-    </motion.h2>
-
-  </div>
-</div>
 
       </div>
 
       {/* STYLES */}
       <style jsx global>{`
         .stroke-text {
-          -webkit-text-stroke: 1px white;
+          /* contorno mais fino no mobile: 1px numa letra de 56px pesa
+             muito mais que numa de 300px */
+          -webkit-text-stroke: 0.6px white;
+        }
+
+        @media (min-width: 768px) {
+          .stroke-text {
+            -webkit-text-stroke: 1px white;
+          }
         }
 
         /* só o SVG da animação de fundo — esta regra era global e
